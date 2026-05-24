@@ -9,30 +9,36 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentSpeed = 0f;
 
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
-        // Get player input
         float moveInput = Input.GetAxis("Vertical");
         float turnInput = Input.GetAxis("Horizontal");
 
-        // Accelerate
+        // Acceleration
         if (moveInput != 0)
         {
             currentSpeed += moveInput * acceleration * Time.deltaTime;
         }
         else
         {
-            // Gradually slow down
             currentSpeed = Mathf.Lerp(currentSpeed, 0f, deceleration * Time.deltaTime);
         }
 
-        // Clamp speed
         currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed / 2f, maxSpeed);
 
-        // Move vehicle
-        transform.Translate(Vector3.forward * currentSpeed * Time.deltaTime);
-
-        // Rotate vehicle
+        // Rotate
         transform.Rotate(Vector3.up * turnInput * rotationSpeed * Time.deltaTime);
+    }
+
+    void FixedUpdate()
+    {
+        rb.linearVelocity = transform.forward * currentSpeed;
     }
 }
