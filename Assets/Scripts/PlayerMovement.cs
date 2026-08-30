@@ -8,18 +8,20 @@ public class PlayerMovement : MonoBehaviour
     public float rotationSpeed = 100f;
 
     private float currentSpeed = 0f;
+    private float turnInput = 0f;
 
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints |= RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void Update()
     {
         float moveInput = Input.GetAxis("Vertical");
-        float turnInput = Input.GetAxis("Horizontal");
+        turnInput = Input.GetAxis("Horizontal");
 
         // Acceleration
         if (moveInput != 0)
@@ -32,13 +34,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed / 2f, maxSpeed);
-
-        // Rotate
-        transform.Rotate(Vector3.up * turnInput * rotationSpeed * Time.deltaTime);
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = transform.forward * currentSpeed;
+        Vector3 horizontalVelocity = transform.forward * currentSpeed;
+        rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.z);
+
+        Quaternion turn = Quaternion.Euler(Vector3.up * turnInput * rotationSpeed * Time.fixedDeltaTime);
+        rb.MoveRotation(rb.rotation * turn);
     }
 }
