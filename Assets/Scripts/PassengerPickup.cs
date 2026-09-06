@@ -4,50 +4,57 @@ using System.Collections;
 public class PassengerPickup : MonoBehaviour
 {
     public GameObject passenger;
+    public Transform passengerSeat;
 
+    private Rigidbody vehicleRb;
     private bool playerInside = false;
     private bool passengerPickedUp = false;
+
 
     void Update()
     {
         if (playerInside && !passengerPickedUp)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-
-            // Check if vehicle is almost stopped
-            if (rb.linearVelocity.magnitude < 0.1f)
+            if (vehicleRb != null && vehicleRb.linearVelocity.magnitude < 0.1f)
             {
                 StartCoroutine(PickupPassenger());
             }
         }
     }
 
+
     IEnumerator PickupPassenger()
     {
         passengerPickedUp = true;
 
-        // Wait 2 seconds
         yield return new WaitForSeconds(2f);
 
-        // Move passenger into vehicle
-        passenger.transform.SetParent(transform);
+        passenger.transform.SetParent(passengerSeat);
 
-        passenger.transform.localPosition = new Vector3(0f, 1f, 0f);
+        passenger.transform.localPosition = Vector3.zero;
+
+        passenger.transform.localRotation = Quaternion.identity;
     }
+
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("PickupZone"))
+        if (other.CompareTag("Player"))
         {
             playerInside = true;
+            vehicleRb = other.GetComponent<Rigidbody>();
+
+            Debug.Log("Passenger zone entered by: " + other.name);
         }
     }
 
+
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("PickupZone"))
+        if (other.CompareTag("Player"))
         {
             playerInside = false;
+            vehicleRb = null;
         }
     }
 }
