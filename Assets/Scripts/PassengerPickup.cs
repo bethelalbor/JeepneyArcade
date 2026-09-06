@@ -4,11 +4,18 @@ using System.Collections;
 public class PassengerPickup : MonoBehaviour
 {
     public GameObject passenger;
-    public Transform passengerSeat;
 
     private Rigidbody vehicleRb;
+    private PassengerManager passengerManager;
+
     private bool playerInside = false;
     private bool passengerPickedUp = false;
+
+
+    void Start()
+    {
+        passengerManager = FindFirstObjectByType<PassengerManager>();
+    }
 
 
     void Update()
@@ -29,29 +36,32 @@ public class PassengerPickup : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        passenger.transform.SetParent(passengerSeat);
+        bool success = passengerManager.AddPassenger(passenger);
 
-        passenger.transform.localPosition = Vector3.zero;
-
-        passenger.transform.localRotation = Quaternion.identity;
+        if(success)
+        {
+            Debug.Log("Passenger successfully seated");
+        }
+        else
+        {
+            Debug.Log("No available passenger seat");
+        }
     }
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if(other.CompareTag("Player"))
         {
             playerInside = true;
             vehicleRb = other.GetComponent<Rigidbody>();
-
-            Debug.Log("Passenger zone entered by: " + other.name);
         }
     }
 
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if(other.CompareTag("Player"))
         {
             playerInside = false;
             vehicleRb = null;
