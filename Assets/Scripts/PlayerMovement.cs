@@ -9,9 +9,28 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentSpeed = 0f;
     private float turnInput = 0f;
-
     private Rigidbody rb;
 
+    private PlayerControls controls;
+    private Vector2 moveInput;
+
+    [Header("Input Settings")]
+    public float inputDeadzone = 0.15f;
+    public float steeringSensitivity = 1f;
+    void Awake()
+{
+    controls = new PlayerControls();
+
+    controls.Vehicle.Move.performed += ctx =>
+    {
+        moveInput = ctx.ReadValue<Vector2>();
+    };
+
+    controls.Vehicle.Move.canceled += ctx =>
+    {
+        moveInput = Vector2.zero;
+    };
+}
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,20 +39,29 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
+        float throttle = moveInput.y;
+        turnInput = moveInput.x;
 
-        // Acceleration
-        if (moveInput != 0)
+
+        if(throttle != 0)
         {
-            currentSpeed += moveInput * acceleration * Time.deltaTime;
+            currentSpeed += throttle * acceleration * Time.deltaTime;
         }
         else
         {
-            currentSpeed = Mathf.Lerp(currentSpeed, 0f, deceleration * Time.deltaTime);
+            currentSpeed = Mathf.Lerp(
+                currentSpeed,
+                0f,
+                deceleration * Time.deltaTime
+            );
         }
 
-        currentSpeed = Mathf.Clamp(currentSpeed, -maxSpeed / 2f, maxSpeed);
+
+        currentSpeed = Mathf.Clamp(
+            currentSpeed,
+            -maxSpeed / 2f,
+            maxSpeed
+        );
     }
 
     void FixedUpdate()
@@ -44,4 +72,16 @@ public class PlayerMovement : MonoBehaviour
         Quaternion turn = Quaternion.Euler(Vector3.up * turnInput * rotationSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(rb.rotation * turn);
     }
+
+    void OnEnable()
+    {
+        controls.Enable();
+    }
+
+
+    void OnDisable()
+    {
+        controls.Disable();
+    }
 }
+
