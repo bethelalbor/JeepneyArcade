@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - PickupZone
+  - Passenger
   layers:
   - Default
   - TransparentFX
