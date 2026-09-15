@@ -7,6 +7,7 @@ public class PassengerPickup : MonoBehaviour
 
     private Rigidbody vehicleRb;
     private PassengerManager passengerManager;
+    private VehiclePassengerHandler vehicleHandler;
 
     private bool playerInside = false;
     private bool passengerPickedUp = false;
@@ -20,9 +21,10 @@ public class PassengerPickup : MonoBehaviour
 
     void Update()
     {
-        if (playerInside && !passengerPickedUp)
+        if(playerInside && !passengerPickedUp)
         {
-            if (vehicleRb != null && vehicleRb.linearVelocity.magnitude < 0.1f)
+            if(vehicleRb != null &&
+               vehicleRb.linearVelocity.magnitude < 0.1f)
             {
                 StartCoroutine(PickupPassenger());
             }
@@ -34,37 +36,92 @@ public class PassengerPickup : MonoBehaviour
     {
         passengerPickedUp = true;
 
-        yield return new WaitForSeconds(2f);
 
-        bool success = passengerManager.AddPassenger(passenger);
+        // CHECK SEAT BEFORE PASSENGER MOVES
+        Transform availableSeat =
+            passengerManager.GetAvailableSeat();
 
-        if(success)
+
+        if(availableSeat == null)
         {
-            Debug.Log("Passenger successfully seated");
+            Debug.Log("No available seats");
+
+            passengerPickedUp = false;
+
+            yield break;
         }
-        else
+
+
+        passengerManager.ReserveSeat(availableSeat);
+
+
+        yield return new WaitForSeconds(1f);
+
+
+        PassengerAI ai =
+            passenger.GetComponent<PassengerAI>();
+
+
+        if(ai == null)
         {
-            Debug.Log("No available passenger seat");
+            Debug.LogError("PassengerAI missing");
+            yield break;
         }
+
+
+        if(vehicleHandler == null)
+        {
+            Debug.LogError("VehiclePassengerHandler missing");
+            yield break;
+        }
+
+
+        // Walk to jeepney door
+        ai.WalkTo(
+            vehicleHandler.GetPassengerDoor().position
+        );
+
+
+        while(!ai.HasReachedTarget())
+        {
+            yield return null;
+        }
+
+
+        // Play sitting animation
+        ai.Sit();
+
+
+        yield return new WaitForSeconds(0.5f);
+
+
+        // Assign already confirmed seat
+        passengerManager.AddPassengerToSeat(
+            passenger,
+            availableSeat
+        );
+
+
+        Debug.Log("Passenger seated");
     }
+
 
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-
-        Vector3 toPassenger = (transform.position - other.transform.position).normalized;
-        float side = Vector3.Dot(other.transform.right, toPassenger);
-
-        if (side < 0f)
-        {
-            // passenger is on the wrong side relative to travel direction — ignore
+        if(!other.CompareTag("Player"))
             return;
-        }
+
 
         playerInside = true;
-        vehicleRb = other.GetComponent<Rigidbody>();
+
+        vehicleRb =
+            other.GetComponent<Rigidbody>();
+
+        vehicleHandler =
+            other.GetComponent<VehiclePassengerHandler>();
     }
+
 
 
     void OnTriggerExit(Collider other)

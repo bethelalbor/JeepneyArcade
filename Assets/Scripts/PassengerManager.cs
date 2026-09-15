@@ -4,16 +4,22 @@ using System.Collections.Generic;
 public class PassengerManager : MonoBehaviour
 {
     public List<Transform> seats;
-    public List<GameObject> passengersOnBoard =
-      new List<GameObject>();
 
-    private Dictionary<Transform, GameObject> occupiedSeats 
-        = new Dictionary<Transform, GameObject>();
+    public List<GameObject> passengersOnBoard =
+        new List<GameObject>();
+
+
+    private Dictionary<Transform, GameObject> occupiedSeats =
+        new Dictionary<Transform, GameObject>();
+
+
+    private HashSet<Transform> reservedSeats =
+        new HashSet<Transform>();
 
 
     void Start()
     {
-        foreach (Transform seat in seats)
+        foreach(Transform seat in seats)
         {
             occupiedSeats.Add(seat, null);
         }
@@ -22,9 +28,10 @@ public class PassengerManager : MonoBehaviour
 
     public Transform GetAvailableSeat()
     {
-        foreach (Transform seat in seats)
+        foreach(Transform seat in seats)
         {
-            if (occupiedSeats[seat] == null)
+            if(occupiedSeats[seat] == null &&
+               !reservedSeats.Contains(seat))
             {
                 return seat;
             }
@@ -34,51 +41,72 @@ public class PassengerManager : MonoBehaviour
     }
 
 
-    public bool AddPassenger(GameObject passenger)
+    public bool ReserveSeat(Transform seat)
     {
-        Transform seat = GetAvailableSeat();
-
         if(seat == null)
+            return false;
+
+
+        if(occupiedSeats[seat] != null)
+            return false;
+
+
+        if(reservedSeats.Contains(seat))
+            return false;
+
+
+        reservedSeats.Add(seat);
+
+        return true;
+    }
+
+
+    public bool AddPassengerToSeat(
+        GameObject passenger,
+        Transform seat
+    )
+    {
+        if(seat == null)
+            return false;
+
+
+        reservedSeats.Remove(seat);
+
+
+        if(occupiedSeats[seat] != null)
         {
-            Debug.Log("NO SEAT AVAILABLE");
+            Debug.Log("Seat already occupied!");
             return false;
         }
 
-        Debug.Log("Assigning passenger to: " + seat.name);
 
         passenger.transform.SetParent(seat);
-        passenger.transform.localPosition = Vector3.zero;
-        passenger.transform.localRotation = Quaternion.identity;
+
+        passenger.transform.localPosition =
+            Vector3.zero;
+
+        passenger.transform.localRotation =
+            Quaternion.identity;
+
 
         occupiedSeats[seat] = passenger;
 
+
         passengersOnBoard.Add(passenger);
 
-        PassengerData data = passenger.GetComponent<PassengerData>();
+
+        PassengerData data =
+            passenger.GetComponent<PassengerData>();
 
         if(data != null)
         {
             data.isOnVehicle = true;
         }
 
+
         return true;
     }
 
-
-    public void RemovePassenger(GameObject passenger)
-    {
-        foreach(var seat in occupiedSeats.Keys)
-        {
-            if(occupiedSeats[seat] == passenger)
-            {
-                occupiedSeats[seat] = null;
-                break;
-            }
-        }
-
-     
-        passenger.transform.SetParent(null);
-    }
 
     public void DropPassenger(GameObject passenger)
     {
@@ -91,16 +119,19 @@ public class PassengerManager : MonoBehaviour
             }
         }
 
+
         passenger.transform.SetParent(null);
 
-        PassengerData data = passenger.GetComponent<PassengerData>();
+
+        PassengerData data =
+            passenger.GetComponent<PassengerData>();
 
         if(data != null)
         {
             data.isOnVehicle = false;
         }
 
-        Debug.Log("Passenger dropped off");
+
         passengersOnBoard.Remove(passenger);
     }
 }
