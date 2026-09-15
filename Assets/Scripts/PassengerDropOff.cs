@@ -76,6 +76,16 @@ public class PassengerDropOff : MonoBehaviour
         GameObject passenger
     )
     {
+        PassengerData data =
+          passenger.GetComponent<PassengerData>();
+
+
+        if(data != null)
+        {
+            EconomyManager.Instance.AddMoney(
+                data.fareAmount
+            );
+        }
         // Remove passenger from seat
         manager.DropPassenger(passenger);
 
