@@ -51,11 +51,19 @@ public class PassengerPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        Vector3 toPassenger = (transform.position - other.transform.position).normalized;
+        float side = Vector3.Dot(other.transform.right, toPassenger);
+
+        if (side < 0f)
         {
-            playerInside = true;
-            vehicleRb = other.GetComponent<Rigidbody>();
+            // passenger is on the wrong side relative to travel direction — ignore
+            return;
         }
+
+        playerInside = true;
+        vehicleRb = other.GetComponent<Rigidbody>();
     }
 
 

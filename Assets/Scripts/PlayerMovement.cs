@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float maxSpeed = 6f;
+    public float maxSpeed = 4f;
     public float acceleration = 2f;
     public float deceleration = 3f;
-    public float rotationSpeed = 50f;
+    public float rotationSpeed = 25f;
 
     [Header("Input Settings")]
     public float inputDeadzone = 0.15f;

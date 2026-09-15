@@ -1030,14 +1030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 753148638}
-  localOffset: {x: 0, y: 16, z: -16}
-  followSmoothness: 8
-  rotationSmoothness: 8
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
-  collisionRadius: 0.3
-  minDistance: 50
 --- !u!1 &336122058
 GameObject:
   m_ObjectHideFlags: 0
