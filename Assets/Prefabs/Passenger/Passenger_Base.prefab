@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1879425050409180953}
   - component: {fileID: 1394076452882917058}
   - component: {fileID: 7259832228972960004}
+  - component: {fileID: 2264051071951808727}
+  - component: {fileID: 4775663268161676294}
   m_Layer: 0
   m_Name: Passenger_Base
   m_TagString: Passenger
@@ -32,8 +34,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8192602442983429089}
   - {fileID: 7055018443460041238}
+  - {fileID: 8192602442983429089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1879425050409180953
@@ -96,6 +98,32 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2264051071951808727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308221878512248556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033ef4666af24494f891b6a55ea986fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassengerAI
+  walkSpeed: 2
+--- !u!114 &4775663268161676294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308221878512248556}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385678da8366f36479a1e17944eb1d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassengerPickup
+  passenger: {fileID: 4308221878512248556}
 --- !u!1 &7068520229981523132
 GameObject:
   m_ObjectHideFlags: 0
