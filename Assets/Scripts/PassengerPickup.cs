@@ -53,19 +53,9 @@ public class PassengerPickup : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        Vector3 toPassenger = (transform.position - other.transform.position).normalized;
-        float side = Vector3.Dot(other.transform.right, toPassenger);
-
-        if (side < 0f)
-        {
-            // passenger is on the wrong side relative to travel direction — ignore
-            return;
-        }
-
         playerInside = true;
         vehicleRb = other.GetComponent<Rigidbody>();
     }
-
 
     void OnTriggerExit(Collider other)
     {
