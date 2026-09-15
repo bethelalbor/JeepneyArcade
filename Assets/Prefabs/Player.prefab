@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 3324286332472570055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 1.25, z: -1.5}
+  m_LocalPosition: {x: -0.5, y: 1.1, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 4663101864104464614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 1.25, z: 0.1}
+  m_LocalPosition: {x: -0.5, y: 1.1, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -123,12 +123,43 @@ Transform:
   m_GameObject: {fileID: 4844588672490604318}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 1.25, z: -3.1}
+  m_LocalPosition: {x: -0.5, y: 1.1, z: -2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1136278853369585895}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &5064880273373820100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5922488245758960810}
+  m_Layer: 0
+  m_Name: PassengerDoorPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5922488245758960810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064880273373820100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.69, z: -3.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964471941249576033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5134968737445134365
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 5134968737445134365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 1.25, z: -0.7}
+  m_LocalPosition: {x: -0.5, y: 1.1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 6791426698089855602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5, y: 1.25, z: -2.3}
+  m_LocalPosition: {x: -0.5, y: 1.1, z: -1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -205,6 +236,7 @@ GameObject:
   - component: {fileID: 3045324644575745250}
   - component: {fileID: 3280757528596203875}
   - component: {fileID: 4435900660312401522}
+  - component: {fileID: 3259244474251346753}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -227,6 +259,7 @@ Transform:
   m_Children:
   - {fileID: 7857371196475247844}
   - {fileID: 1136278853369585895}
+  - {fileID: 5922488245758960810}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4144674243752000838
@@ -353,6 +386,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.7, y: 2.8507068, z: 6.593626}
   m_Center: {x: 0, y: 1.4653534, z: -0.05554819}
+--- !u!114 &3259244474251346753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108483270984563777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d7e8b5d93248e4595dcfb3947ff683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehiclePassengerHandler
+  passengerDoorPoint: {fileID: 5922488245758960810}
 --- !u!1001 &7674208550703753999
 PrefabInstance:
   m_ObjectHideFlags: 0

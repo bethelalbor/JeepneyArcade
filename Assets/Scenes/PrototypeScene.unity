@@ -662,13 +662,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sidewalk
       objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.34
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2836733887532287280, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 165136420}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
 --- !u!1001 &154116613
 PrefabInstance:
@@ -759,11 +764,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
   m_PrefabInstance: {fileID: 604703426}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &165136417 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2836733887532287280, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
-  m_PrefabInstance: {fileID: 145349618}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &165136418 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2329658323421882644, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
@@ -774,25 +774,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8671759669283560481, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
   m_PrefabInstance: {fileID: 145349618}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165136417}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f26df51d9b3360c4dba0f5e0bbcc630c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestinationPoint
---- !u!114 &165136420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165136417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26df51d9b3360c4dba0f5e0bbcc630c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestinationPoint
-  destinationName: Sidewalk
 --- !u!1001 &184578620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3222,11 +3209,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d4cfcf659200d7548b90a5580c3ab18f, type: 3}
   m_PrefabInstance: {fileID: 665960442}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &743678212 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2836733887532287280, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
-  m_PrefabInstance: {fileID: 880351057}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &743678213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2329658323421882644, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
@@ -3237,25 +3219,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8671759669283560481, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
   m_PrefabInstance: {fileID: 880351057}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743678212}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f26df51d9b3360c4dba0f5e0bbcc630c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestinationPoint
---- !u!114 &743678215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743678212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f26df51d9b3360c4dba0f5e0bbcc630c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestinationPoint
-  destinationName: Bar
 --- !u!4 &753148638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7964471941249576033, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
@@ -3467,13 +3436,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.41
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2836733887532287280, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 743678215}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
 --- !u!1001 &883853266
 PrefabInstance:
@@ -3819,7 +3793,7 @@ PrefabInstance:
       objectReference: {fileID: 768681434}
     - target: {fileID: 8936238804070773283, guid: d9c3f585026e5dc4b8ea5c2999d68d39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.56
+      value: 15.41
       objectReference: {fileID: 0}
     - target: {fileID: 8936238804070773283, guid: d9c3f585026e5dc4b8ea5c2999d68d39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5826,6 +5800,14 @@ PrefabInstance:
     - target: {fileID: 2836733887532287280, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
       propertyPath: m_Name
       value: Terminal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 49.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264571457898080225, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.2
       objectReference: {fileID: 0}
     - target: {fileID: 8671759669283560481, guid: 4b2e43b1fb969854ca28abec1d725567, type: 3}
       propertyPath: destinationName
