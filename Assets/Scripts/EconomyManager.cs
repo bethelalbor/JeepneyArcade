@@ -29,4 +29,24 @@ public class EconomyManager : MonoBehaviour
             " | Balance: " + currentBalance
         );
     }
+
+
+
+    public bool TrySpendMoney(int amount)
+    {
+        if(currentBalance < amount)
+            return false;
+
+
+        currentBalance -= amount;
+
+
+        Debug.Log(
+            "Spent: " + amount +
+            " | Balance: " + currentBalance
+        );
+
+
+        return true;
+    }
 }

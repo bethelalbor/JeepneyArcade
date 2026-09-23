@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 3280757528596203875}
   - component: {fileID: 4435900660312401522}
   - component: {fileID: 3259244474251346753}
+  - component: {fileID: 3190060584193735248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -384,8 +385,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.7, y: 2.8507068, z: 6.593626}
-  m_Center: {x: 0, y: 1.4653534, z: -0.05554819}
+  m_Size: {x: 2.7, y: 2.9594612, z: 6.609063}
+  m_Center: {x: 0, y: 1.4727237, z: -0.03239298}
 --- !u!114 &3259244474251346753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +400,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehiclePassengerHandler
   passengerDoorPoint: {fileID: 5922488245758960810}
+--- !u!114 &3190060584193735248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108483270984563777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a96475dfb1d813469678d635c4a82ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FuelSystem
+  maxFuel: 100
+  currentFuel: 100
+  fuelConsumptionRate: 2
+  refuelRate: 20
 --- !u!1001 &7674208550703753999
 PrefabInstance:
   m_ObjectHideFlags: 0
