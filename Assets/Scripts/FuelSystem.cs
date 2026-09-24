@@ -75,7 +75,7 @@ public class FuelSystem : MonoBehaviour
 
             if(gameOver != null)
             {
-                gameOver.ShowGameOver();
+                gameOver.ShowFuelGameOver();
             }
         }
     }

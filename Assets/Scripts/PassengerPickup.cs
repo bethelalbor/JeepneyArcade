@@ -76,10 +76,38 @@ public class PassengerPickup : MonoBehaviour
         }
 
 
-        // Walk to jeepney door
-        ai.WalkTo(
-            vehicleHandler.GetPassengerDoor().position
-        );
+        Vector3 passengerPosition =
+            passenger.transform.position;
+
+        Vector3 doorPosition =
+            vehicleHandler.GetPassengerDoor().position;
+
+        Vector3 rightDirection =
+            passenger.transform.right;
+
+        rightDirection.y = 0f;
+        rightDirection.Normalize();
+
+        Vector3 doorOffset =
+            doorPosition - passengerPosition;
+
+        doorOffset.y = 0f;
+
+        Vector3 sideWaypoint =
+            passengerPosition +
+            rightDirection *
+            Vector3.Dot(doorOffset, rightDirection);
+
+        // Walk sideways first, then turn and walk to the jeepney door.
+        ai.WalkTo(sideWaypoint);
+
+        while(!ai.HasReachedTarget())
+        {
+            yield return null;
+        }
+
+
+        ai.WalkTo(doorPosition);
 
 
         while(!ai.HasReachedTarget())
