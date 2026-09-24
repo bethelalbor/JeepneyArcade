@@ -8,6 +8,7 @@ public class GameOverManager : MonoBehaviour
     [Header("UI")]
     public GameObject gameOverCanvas;
     public TMP_Text statusText;
+    public TMP_Text emergencyActionText;
 
 
     [Header("Systems")]
@@ -22,10 +23,19 @@ public class GameOverManager : MonoBehaviour
     public int emergencyRepairCost = 200;
 
 
+    private bool vehicleIsWrecked = false;
+
+
 
     public void ShowFuelGameOver()
     {
+        vehicleIsWrecked = false;
+
         statusText.text = "OUT OF FUEL";
+        emergencyActionText.text =
+            "EMERGENCY REFUEL (₱" +
+            emergencyFuelCost +
+            ")";
 
         gameOverCanvas.SetActive(true);
 
@@ -36,7 +46,13 @@ public class GameOverManager : MonoBehaviour
 
     public void ShowWrecked()
     {
+        vehicleIsWrecked = true;
+
         statusText.text = "WRECKED";
+        emergencyActionText.text =
+            "EMERGENCY REPAIR (₱" +
+            emergencyRepairCost +
+            ")";
 
         gameOverCanvas.SetActive(true);
 
@@ -54,6 +70,21 @@ public class GameOverManager : MonoBehaviour
             fuelSystem.EmergencyRefuel();
 
             gameOverCanvas.SetActive(false);
+        }
+    }
+
+
+
+
+    public void EmergencyRecovery()
+    {
+        if(vehicleIsWrecked)
+        {
+            EmergencyRepair();
+        }
+        else
+        {
+            EmergencyRefuel();
         }
     }
 

@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "EMERGENCY REFUEL (\u20B1200)"
+  m_text: "EMERGENCY REFUEL (\u20B150)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4375,7 +4375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8083509be29c7dc47bf13756761d4ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EconomyManager
-  currentBalance: 50
+  currentBalance: 200
 --- !u!4 &610439152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 85348f60323277544b2b17a2d5c20f17, type: 3}
@@ -6044,6 +6044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
   gameOverCanvas: {fileID: 1025501458}
   statusText: {fileID: 56420739}
+  emergencyActionText: {fileID: 205771937}
   fuelSystem: {fileID: 753148651}
   vehicleHealth: {fileID: 947937436}
   economyManager: {fileID: 606885693}
@@ -7457,7 +7458,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1025501459}
         m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
-        m_MethodName: EmergencyRefuel
+        m_MethodName: EmergencyRecovery
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
