@@ -69,6 +69,14 @@ public class FuelSystem : MonoBehaviour
         if(currentFuel <= 0)
         {
             playerMovement.DisableMovement();
+
+            GameOverManager gameOver =
+                FindFirstObjectByType<GameOverManager>(FindObjectsInactive.Include);
+
+            if(gameOver != null)
+            {
+                gameOver.ShowGameOver();
+            }
         }
     }
 
@@ -133,5 +141,14 @@ public class FuelSystem : MonoBehaviour
     public float GetFuelPercentage()
     {
         return currentFuel / maxFuel;
+    }
+
+    public void EmergencyRefuel()
+    {
+        currentFuel = maxFuel;
+
+        playerMovement.EnableMovement();
+
+        Debug.Log("Emergency refuel purchased");
     }
 }

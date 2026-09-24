@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 4435900660312401522}
   - component: {fileID: 3259244474251346753}
   - component: {fileID: 3190060584193735248}
+  - component: {fileID: 3736783092167067033}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -416,6 +417,19 @@ MonoBehaviour:
   currentFuel: 100
   fuelConsumptionRate: 2
   refuelRate: 20
+--- !u!114 &3736783092167067033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108483270984563777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c69c164adb7f0c643b86c86d613ad9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMoney
+  currentMoney: 0
 --- !u!1001 &7674208550703753999
 PrefabInstance:
   m_ObjectHideFlags: 0
