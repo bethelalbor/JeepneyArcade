@@ -6215,7 +6215,7 @@ MonoBehaviour:
   fuelSystem: {fileID: 753148651}
   vehicleHealth: {fileID: 947937436}
   economyManager: {fileID: 606885693}
-  emergencyFuelCost: 50
+  emergencyFuelCost: 200
   emergencyRepairCost: 200
 --- !u!114 &1025501460
 MonoBehaviour:
