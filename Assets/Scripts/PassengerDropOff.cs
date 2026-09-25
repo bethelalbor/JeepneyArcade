@@ -15,7 +15,6 @@ public class PassengerDropOff : MonoBehaviour
             return;
 
 
-        // Get jeepney door location from Player prefab
         VehiclePassengerHandler handler =
             other.GetComponent<VehiclePassengerHandler>();
 
@@ -58,6 +57,7 @@ public class PassengerDropOff : MonoBehaviour
         }
 
 
+
         foreach(GameObject passenger in passengersToDrop)
         {
             StartCoroutine(
@@ -71,13 +71,14 @@ public class PassengerDropOff : MonoBehaviour
 
 
 
+
     IEnumerator DropPassengerRoutine(
         PassengerManager manager,
         GameObject passenger
     )
     {
         PassengerData data =
-          passenger.GetComponent<PassengerData>();
+            passenger.GetComponent<PassengerData>();
 
 
         if(data != null)
@@ -86,15 +87,24 @@ public class PassengerDropOff : MonoBehaviour
                 data.fareAmount
             );
         }
-        // Remove passenger from seat
+
+
+        // SCORE: successful delivery
+        if(ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(10);
+        }
+
+
+
         manager.DropPassenger(passenger);
+
 
 
         PassengerAI ai =
             passenger.GetComponent<PassengerAI>();
 
 
-        // Move passenger instantly outside jeepney
         if(passengerDoorPoint != null)
         {
             passenger.transform.position =
@@ -112,7 +122,6 @@ public class PassengerDropOff : MonoBehaviour
 
 
 
-        // Walk away from jeepney
         if(ai != null && destination.walkPoint != null)
         {
             ai.WalkTo(

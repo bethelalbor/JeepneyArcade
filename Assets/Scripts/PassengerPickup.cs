@@ -5,18 +5,26 @@ public class PassengerPickup : MonoBehaviour
 {
     public GameObject passenger;
 
+
     private Rigidbody vehicleRb;
+
     private PassengerManager passengerManager;
+
     private VehiclePassengerHandler vehicleHandler;
 
+
     private bool playerInside = false;
+
     private bool passengerPickedUp = false;
+
 
 
     void Start()
     {
-        passengerManager = FindFirstObjectByType<PassengerManager>();
+        passengerManager =
+            FindFirstObjectByType<PassengerManager>();
     }
+
 
 
     void Update()
@@ -32,14 +40,17 @@ public class PassengerPickup : MonoBehaviour
     }
 
 
+
+
     IEnumerator PickupPassenger()
     {
         passengerPickedUp = true;
 
 
-        // CHECK SEAT BEFORE PASSENGER MOVES
+
         Transform availableSeat =
             passengerManager.GetAvailableSeat();
+
 
 
         if(availableSeat == null)
@@ -52,10 +63,13 @@ public class PassengerPickup : MonoBehaviour
         }
 
 
+
         passengerManager.ReserveSeat(availableSeat);
 
 
+
         yield return new WaitForSeconds(1f);
+
 
 
         PassengerAI ai =
@@ -69,6 +83,7 @@ public class PassengerPickup : MonoBehaviour
         }
 
 
+
         if(vehicleHandler == null)
         {
             Debug.LogError("VehiclePassengerHandler missing");
@@ -76,62 +91,104 @@ public class PassengerPickup : MonoBehaviour
         }
 
 
+
         Vector3 passengerPosition =
             passenger.transform.position;
+
 
         Vector3 doorPosition =
             vehicleHandler.GetPassengerDoor().position;
 
+
+
         Vector3 rightDirection =
             passenger.transform.right;
 
+
         rightDirection.y = 0f;
+
         rightDirection.Normalize();
+
+
 
         Vector3 doorOffset =
             doorPosition - passengerPosition;
 
+
         doorOffset.y = 0f;
+
+
 
         Vector3 sideWaypoint =
             passengerPosition +
             rightDirection *
-            Vector3.Dot(doorOffset, rightDirection);
+            Vector3.Dot(
+                doorOffset,
+                rightDirection
+            );
 
-        // Walk sideways first, then turn and walk to the jeepney door.
+
+
         ai.WalkTo(sideWaypoint);
+
 
         while(!ai.HasReachedTarget())
         {
             yield return null;
         }
+
 
 
         ai.WalkTo(doorPosition);
 
 
+
         while(!ai.HasReachedTarget())
         {
             yield return null;
         }
 
 
-        // Play sitting animation
+
         ai.Sit();
+
 
 
         yield return new WaitForSeconds(0.5f);
 
 
-        // Assign already confirmed seat
+
         passengerManager.AddPassengerToSeat(
             passenger,
             availableSeat
         );
 
 
+
+        // SCORE: successful pickup
+        if(ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.AddScore(25);
+        }
+
+
+
+        // SCORE: full passenger capacity
+        if(passengerManager.passengersOnBoard.Count ==
+           passengerManager.seats.Count)
+        {
+            if(ScoreManager.Instance != null)
+            {
+                ScoreManager.Instance.AddScore(50);
+            }
+        }
+
+
+
         Debug.Log("Passenger seated");
     }
+
+
 
 
 
@@ -143,12 +200,16 @@ public class PassengerPickup : MonoBehaviour
 
         playerInside = true;
 
+
         vehicleRb =
             other.GetComponent<Rigidbody>();
+
 
         vehicleHandler =
             other.GetComponent<VehiclePassengerHandler>();
     }
+
+
 
 
 
@@ -157,6 +218,7 @@ public class PassengerPickup : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerInside = false;
+
             vehicleRb = null;
         }
     }
