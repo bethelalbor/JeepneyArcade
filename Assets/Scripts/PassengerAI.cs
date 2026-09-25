@@ -6,6 +6,12 @@ public class PassengerAI : MonoBehaviour
     private bool hasTarget = false;
 
     public float walkSpeed = 2f;
+    public float runSpeed = 4f;
+
+    [Range(0f, 1f)]
+    public float runChance = 0.35f;
+
+    private bool isRunning;
 
     private Animator animator;
     private Collider passengerCollider;
@@ -24,7 +30,7 @@ public class PassengerAI : MonoBehaviour
         hasTarget = true;
 
         EnablePassengerCollision(true);
-        SetWalking(true);
+        SetMovementAnimation(true);
     }
 
 
@@ -35,7 +41,7 @@ public class PassengerAI : MonoBehaviour
 
         EnablePassengerCollision(false);
 
-        SetWalking(true);
+        SetMovementAnimation(true);
     }
 
 
@@ -47,7 +53,7 @@ public class PassengerAI : MonoBehaviour
 
     public void Sit()
     {
-        SetWalking(false);
+        SetMovementAnimation(false);
 
         if(animator != null)
         {
@@ -95,7 +101,8 @@ public class PassengerAI : MonoBehaviour
             Vector3.MoveTowards(
                 transform.position,
                 target,
-                walkSpeed * Time.deltaTime
+                (isRunning ? runSpeed : walkSpeed)
+                * Time.deltaTime
             );
 
 
@@ -103,7 +110,7 @@ public class PassengerAI : MonoBehaviour
         {
             hasTarget = false;
 
-            SetWalking(false);
+            SetMovementAnimation(false);
         }
     }
 
@@ -117,11 +124,14 @@ public class PassengerAI : MonoBehaviour
     }
 
 
-    void SetWalking(bool walking)
+    void SetMovementAnimation(bool moving)
     {
+        isRunning = moving && Random.value < runChance;
+
         if(animator != null)
         {
-            animator.SetBool("IsWalking", walking);
+            animator.SetBool("IsWalking", moving && !isRunning);
+            animator.SetBool("IsRunning", isRunning);
         }
     }
 }
