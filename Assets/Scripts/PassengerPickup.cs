@@ -22,7 +22,7 @@ public class PassengerPickup : MonoBehaviour
     void Start()
     {
         passengerManager =
-            FindFirstObjectByType<PassengerManager>();
+            FindAnyObjectByType<PassengerManager>();
     }
 
 
@@ -139,8 +139,11 @@ public class PassengerPickup : MonoBehaviour
 
 
 
-        ai.WalkTo(doorPosition);
+        Transform doorTarget =
+            vehicleHandler.GetPassengerDoor();
 
+
+        ai.FollowTarget(doorTarget);
 
 
         while(!ai.HasReachedTarget())

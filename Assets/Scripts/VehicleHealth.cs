@@ -80,9 +80,7 @@ public class VehicleHealth : MonoBehaviour
 
 
         GameOverManager gameOver =
-            FindFirstObjectByType<GameOverManager>(
-                FindObjectsInactive.Include
-            );
+            FindAnyObjectByType<GameOverManager>();
 
 
         if(gameOver != null)

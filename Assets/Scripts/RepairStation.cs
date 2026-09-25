@@ -117,7 +117,7 @@ public class RepairStation : MonoBehaviour
 
 
         economyManager =
-            FindFirstObjectByType<EconomyManager>();
+            FindAnyObjectByType<EconomyManager>();
     }
 
 
