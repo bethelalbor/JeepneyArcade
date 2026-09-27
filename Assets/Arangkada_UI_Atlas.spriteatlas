@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Arangkada_UI_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4be2a884b2a59e94890a1acfbc612d05, type: 3}
+    - {fileID: 102900000, guid: e3fd288c749750e4081552f93403e30e, type: 3}
+    - {fileID: 102900000, guid: efbd776ee642e774780cdd144c8823da, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 116fab43254f4434faf496210b32de61: 21300000
+    - 9a43ec64c691fbe46b6178d1645af26e: 21300000
+    - 83eb6cb40dc5b334da7c66cad0ff145c: 21300000
+    - d6e63155dd6982844b4306f6d4b0d154: 21300000
+    - 1a4044d5f10b1e343af5d2370ab3e233: 21300000
+    - 520c81e5da696d34a9ef691093252afb: 21300000
+    - 1156d927e37b8e147bc1c1bf887b6e78: 21300000
+    - 5859c5376b9a9ef4bb1b7935d9e779b3: 21300000
+    - 5d990aa7dd95e7b468e0eee668948af2: 21300000
+    - 29345f186e6cbb84cb3d1e8de7a39c42: 21300000
+    - 2eda7e88bf6e988409a29e269d9dfd95: 21300000
+    - a4c14a19326899c489326c0d13dd6f7c: 21300000
+    - ad4c1249eae8d254a9df18d625e808fb: 21300000
+    - 1373cd799e974314ebd4758f1de5fa61: 21300000
+    - e9b4ec0ae2caf1044a42c039b179ccfe: 21300000
+    - ba7300fa92584a244b12d4782b0ea0fd: 21300000
+    - 2784ee5b97f95d948af35753a9825417: 21300000
+    - dc06fd6bf1211664f9c0465b8ffa1673: 21300000
+    - c2084b8bf06485b429b1a2f33dff314e: 21300000
+    - e7561aec2ac33de479af8610634e6fc0: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 116fab43254f4434faf496210b32de61, type: 3}
+  - {fileID: 21300000, guid: 9a43ec64c691fbe46b6178d1645af26e, type: 3}
+  - {fileID: 21300000, guid: 83eb6cb40dc5b334da7c66cad0ff145c, type: 3}
+  - {fileID: 21300000, guid: d6e63155dd6982844b4306f6d4b0d154, type: 3}
+  - {fileID: 21300000, guid: 1a4044d5f10b1e343af5d2370ab3e233, type: 3}
+  - {fileID: 21300000, guid: 520c81e5da696d34a9ef691093252afb, type: 3}
+  - {fileID: 21300000, guid: 1156d927e37b8e147bc1c1bf887b6e78, type: 3}
+  - {fileID: 21300000, guid: 5859c5376b9a9ef4bb1b7935d9e779b3, type: 3}
+  - {fileID: 21300000, guid: 5d990aa7dd95e7b468e0eee668948af2, type: 3}
+  - {fileID: 21300000, guid: 29345f186e6cbb84cb3d1e8de7a39c42, type: 3}
+  - {fileID: 21300000, guid: 2eda7e88bf6e988409a29e269d9dfd95, type: 3}
+  - {fileID: 21300000, guid: a4c14a19326899c489326c0d13dd6f7c, type: 3}
+  - {fileID: 21300000, guid: ad4c1249eae8d254a9df18d625e808fb, type: 3}
+  - {fileID: 21300000, guid: 1373cd799e974314ebd4758f1de5fa61, type: 3}
+  - {fileID: 21300000, guid: e9b4ec0ae2caf1044a42c039b179ccfe, type: 3}
+  - {fileID: 21300000, guid: ba7300fa92584a244b12d4782b0ea0fd, type: 3}
+  - {fileID: 21300000, guid: 2784ee5b97f95d948af35753a9825417, type: 3}
+  - {fileID: 21300000, guid: dc06fd6bf1211664f9c0465b8ffa1673, type: 3}
+  - {fileID: 21300000, guid: c2084b8bf06485b429b1a2f33dff314e, type: 3}
+  - {fileID: 21300000, guid: e7561aec2ac33de479af8610634e6fc0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Play
+  - Accelerate-pressed
+  - Pause
+  - Score-container
+  - Camera
+  - Brake
+  - Fuel-container
+  - Arrow-right
+  - Arrow-left
+  - Pause-pressed
+  - Arrow-left-pressed
+  - Accelerate
+  - Health-bar
+  - Brake-pressed
+  - Fuel-bar
+  - Health-container
+  - Camera-pressed
+  - Arrow-right-pressed
+  - Play-pressed
+  - Balance-container
+  m_RenderDataMap: {}
+  m_Tag: Arangkada_UI_Atlas
+  m_IsVariant: 0

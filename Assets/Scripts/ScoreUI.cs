@@ -11,10 +11,7 @@ public class ScoreUI : MonoBehaviour
     {
         if(ScoreManager.Instance != null)
         {
-            scoreText.text =
-                "Score: "
-                +
-                ScoreManager.Instance.currentScore;
+            scoreText.text = ScoreManager.Instance.currentScore.ToString();
         }
     }
 }
