@@ -8,6 +8,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("OnePlayerGame");
     }
 
+  public void Customize()
+      {
+          SceneManager.LoadScene("Customization");
+      }
+
 
     public void ExitGame()
     {
