@@ -3429,6 +3429,7 @@ GameObject:
   - component: {fileID: 469375922}
   - component: {fileID: 469375924}
   - component: {fileID: 469375923}
+  - component: {fileID: 469375925}
   m_Layer: 0
   m_Name: LeftArrow
   m_TagString: Untagged
@@ -3493,6 +3494,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469375921}
   m_CullTransparentMesh: 1
+--- !u!114 &469375925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469375921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c7f2b5d61c4aa8a1ea6d8c9472f3ab, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MobileSteeringButton
+  steeringLeft: 1
 --- !u!4 &497866877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3da5840b5d838524cb0128fbccf00053, type: 3}
@@ -6717,6 +6731,7 @@ GameObject:
   - component: {fileID: 1169463592}
   - component: {fileID: 1169463594}
   - component: {fileID: 1169463593}
+  - component: {fileID: 1169463595}
   m_Layer: 0
   m_Name: RightArrow
   m_TagString: Untagged
@@ -6781,6 +6796,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169463591}
   m_CullTransparentMesh: 1
+--- !u!114 &1169463595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169463591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c7f2b5d61c4aa8a1ea6d8c9472f3ab, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MobileSteeringButton
+  steeringLeft: 0
 --- !u!1001 &1187102954
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8400,6 +8428,7 @@ GameObject:
   - component: {fileID: 1546493682}
   - component: {fileID: 1546493684}
   - component: {fileID: 1546493683}
+  - component: {fileID: 1546493685}
   m_Layer: 0
   m_Name: Accelerate
   m_TagString: Untagged
@@ -8464,6 +8493,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1546493681}
   m_CullTransparentMesh: 1
+--- !u!114 &1546493685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1546493681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6a1d9f4cb845f9bb239de7135a4f0c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MobileThrottleButton
+  accelerating: 1
 --- !u!4 &1575803774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 6c862cab8ca035a448da05df5868553a, type: 3}
@@ -10479,6 +10521,7 @@ GameObject:
   - component: {fileID: 2080304462}
   - component: {fileID: 2080304464}
   - component: {fileID: 2080304463}
+  - component: {fileID: 2080304465}
   m_Layer: 0
   m_Name: Brake
   m_TagString: Untagged
@@ -10543,6 +10586,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080304461}
   m_CullTransparentMesh: 1
+--- !u!114 &2080304465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080304461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6a1d9f4cb845f9bb239de7135a4f0c, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MobileThrottleButton
+  accelerating: 0
 --- !u!4 &2101259678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 3181f15579d1b0c46872c9980226268b, type: 3}

@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float maxSpeed = 4f;
-    public float acceleration = 2f;
+    public float acceleration = 3f;
     public float deceleration = 3f;
     public float rotationSpeed = 25f;
 
@@ -23,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private PlayerControls controls;
     private Vector2 moveInput;
+    private bool mobileSteerLeft;
+    private bool mobileSteerRight;
+    private bool mobileAccelerating;
+    private bool mobileBraking;
 
 
     private bool movementLocked = false;
@@ -64,8 +69,14 @@ public class PlayerMovement : MonoBehaviour
             return;
 
 
-        float throttle = moveInput.y;
-        float rawTurn = moveInput.x;
+        float mobileThrottle = mobileAccelerating == mobileBraking
+            ? 0f
+            : mobileAccelerating ? 1f : -1f;
+        float throttle = Mathf.Clamp(moveInput.y + mobileThrottle + GetGamepadThrottle(), -1f, 1f);
+        float mobileTurn = mobileSteerLeft == mobileSteerRight
+            ? 0f
+            : mobileSteerLeft ? -1f : 1f;
+        float rawTurn = Mathf.Clamp(moveInput.x + mobileTurn + GetGamepadSteering(), -1f, 1f);
 
 
         turnInput =
@@ -199,6 +210,59 @@ public class PlayerMovement : MonoBehaviour
 
 
 
+    public void SetMobileSteering(bool steeringLeft, bool isPressed)
+    {
+        if (steeringLeft)
+            mobileSteerLeft = isPressed;
+        else
+            mobileSteerRight = isPressed;
+    }
+
+
+
+    public void SetMobileThrottle(bool accelerating, bool isPressed)
+    {
+        if (accelerating)
+            mobileAccelerating = isPressed;
+        else
+            mobileBraking = isPressed;
+    }
+
+
+
+    private float GetGamepadThrottle()
+    {
+        if (Gamepad.current == null)
+            return 0f;
+
+        Gamepad gamepad = Gamepad.current;
+        float accelerate = Mathf.Max(
+            gamepad.buttonSouth.isPressed ? 1f : 0f,
+            gamepad.rightTrigger.ReadValue());
+        float brake = Mathf.Max(
+            gamepad.buttonEast.isPressed ? 1f : 0f,
+            gamepad.leftTrigger.ReadValue());
+
+        return Mathf.Clamp(accelerate - brake, -1f, 1f);
+    }
+
+
+
+    private float GetGamepadSteering()
+    {
+        if (Gamepad.current == null)
+            return 0f;
+
+        bool steeringLeft = Gamepad.current.dpad.left.isPressed;
+        bool steeringRight = Gamepad.current.dpad.right.isPressed;
+
+        return steeringLeft == steeringRight
+            ? 0f
+            : steeringLeft ? -1f : 1f;
+    }
+
+
+
     void OnEnable()
     {
         controls.Enable();
@@ -209,5 +273,9 @@ public class PlayerMovement : MonoBehaviour
     void OnDisable()
     {
         controls.Disable();
+        mobileSteerLeft = false;
+        mobileSteerRight = false;
+        mobileAccelerating = false;
+        mobileBraking = false;
     }
 }

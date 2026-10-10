@@ -71,7 +71,7 @@ public class FuelSystem : MonoBehaviour
             playerMovement.DisableMovement();
 
             GameOverManager gameOver =
-                FindFirstObjectByType<GameOverManager>(FindObjectsInactive.Include);
+                FindAnyObjectByType<GameOverManager>(FindObjectsInactive.Include);
 
             if(gameOver != null)
             {
