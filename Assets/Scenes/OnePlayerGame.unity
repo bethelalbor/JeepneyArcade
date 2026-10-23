@@ -2218,6 +2218,18 @@ MonoBehaviour:
     m_Bits: 0
   collisionRadius: 0.3
   minDistance: 50
+  maxDamageShakeStrength: 0.6
+  maxDamageShakeDuration: 0.35
+  damageForMaxShake: 50
+  shakeFadeSpeed: 2
+  touchPanSensitivity: 0.15
+  mousePanSensitivity: 6
+  gamepadPanSpeed: 90
+  gamepadDeadzone: 0.1
+  maxPanAngle: 60
+  maxVerticalPanAngle: 30
+  returnDelay: 2
+  returnSmoothness: 4
 --- !u!1 &336122058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,7 +3516,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c7f2b5d61c4aa8a1ea6d8c9472f3ab, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileSteeringButton
   steeringLeft: 1
 --- !u!4 &497866877 stripped
@@ -6806,7 +6818,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c7f2b5d61c4aa8a1ea6d8c9472f3ab, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileSteeringButton
   steeringLeft: 0
 --- !u!1001 &1187102954
@@ -8503,7 +8515,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6a1d9f4cb845f9bb239de7135a4f0c, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileThrottleButton
   accelerating: 1
 --- !u!4 &1575803774 stripped
@@ -10596,7 +10608,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6a1d9f4cb845f9bb239de7135a4f0c, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MobileThrottleButton
   accelerating: 0
 --- !u!4 &2101259678 stripped
@@ -11002,6 +11014,22 @@ PrefabInstance:
     - target: {fileID: 3978993921285744080, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: defaultColor.b
+      value: 0.1960784
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: defaultColor.g
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: defaultColor.r
+      value: 0.1960784
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: defaultFontSize
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5372054788039246015, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: m_LocalPosition.z

@@ -15,6 +15,16 @@ public class CameraFollow : MonoBehaviour
     public float collisionRadius = 0.3f;
     public float minDistance = 100f;
 
+    [Header("Damage Shake")]
+    [Tooltip("Maximum local camera offset caused by collision damage.")]
+    [Min(0f)] public float maxDamageShakeStrength = 0.6f;
+    [Tooltip("Maximum amount of time a collision shake can last.")]
+    [Min(0f)] public float maxDamageShakeDuration = 0.35f;
+    [Tooltip("Damage required to reach the maximum shake intensity.")]
+    [Min(0.01f)] public float damageForMaxShake = 50f;
+    [Tooltip("How quickly the shake strength returns to zero.")]
+    [Min(0f)] public float shakeFadeSpeed = 2f;
+
     [Header("Look Around")]
     [Tooltip("Degrees the camera moves for each pixel dragged on a touch screen.")]
     public float touchPanSensitivity = 0.15f;
@@ -37,6 +47,9 @@ public class CameraFollow : MonoBehaviour
     private float verticalPanAngle;
     private float lastPanTime;
     private bool hasPanned;
+    private float currentShakeStrength;
+    private float shakeTimeRemaining;
+    private Vector3 previousShakeOffset;
 
     void Start()
     {
@@ -68,10 +81,60 @@ public class CameraFollow : MonoBehaviour
         }
 
         // Smoothly move + rotate to always look at the target
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * followSmoothness);
+        Vector3 cameraPosition = Vector3.Lerp(
+            transform.position - previousShakeOffset,
+            desiredPosition,
+            Time.deltaTime * followSmoothness
+        );
+
+        previousShakeOffset = GetDamageShakeOffset();
+
+        cameraPosition += previousShakeOffset;
+
+        transform.position = cameraPosition;
 
         Quaternion desiredRotation = Quaternion.LookRotation(target.position - transform.position, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSmoothness);
+    }
+
+    public void ShakeForDamage(float damage)
+    {
+        if(damage <= 0f)
+            return;
+
+        float damagePercentage = Mathf.Clamp01(
+            damage / damageForMaxShake
+        );
+
+        currentShakeStrength = Mathf.Max(
+            currentShakeStrength,
+            maxDamageShakeStrength * damagePercentage
+        );
+
+        shakeTimeRemaining = Mathf.Max(
+            shakeTimeRemaining,
+            maxDamageShakeDuration * damagePercentage
+        );
+    }
+
+    private Vector3 GetDamageShakeOffset()
+    {
+        if(shakeTimeRemaining <= 0f)
+            return Vector3.zero;
+
+        shakeTimeRemaining -= Time.unscaledDeltaTime;
+
+        currentShakeStrength = Mathf.MoveTowards(
+            currentShakeStrength,
+            0f,
+            shakeFadeSpeed * Time.unscaledDeltaTime
+        );
+
+        Vector2 shakeDirection =
+            Random.insideUnitCircle * currentShakeStrength;
+
+        return transform.right * shakeDirection.x +
+               transform.up * shakeDirection.y;
     }
 
     private void HandleLookInput()

@@ -17,6 +17,8 @@ public class VehicleHealth : MonoBehaviour
 
     private PlayerMovement playerMovement;
 
+    private CameraFollow cameraFollow;
+
 
 
     void Start()
@@ -25,6 +27,9 @@ public class VehicleHealth : MonoBehaviour
 
         playerMovement =
             GetComponent<PlayerMovement>();
+
+        cameraFollow =
+            FindAnyObjectByType<CameraFollow>();
     }
 
 
@@ -40,6 +45,12 @@ public class VehicleHealth : MonoBehaviour
 
 
         TakeDamage(damage);
+
+
+        if(cameraFollow != null)
+        {
+            cameraFollow.ShakeForDamage(damage);
+        }
     }
 
 

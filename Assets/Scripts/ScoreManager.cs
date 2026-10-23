@@ -13,6 +13,8 @@ public class ScoreManager : MonoBehaviour
     [Header("Perfect Pickup Combo")]
     public int cleanDeliveryStreak = 0;
 
+    public int PerfectPickupStreak => cleanDeliveryStreak;
+
 
 
     void Awake()

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PassengerPickup : MonoBehaviour
 {
-    private const float PerfectPickupDistance = 3f;
+    private const float PerfectPickupDistance = 5f;
 
     public GameObject passenger;
 
@@ -207,6 +207,34 @@ public class PassengerPickup : MonoBehaviour
                 );
 
             ScoreManager.Instance.AddScore(pickupScore);
+
+
+            string feedbackMessage =
+                "+" + pickupScore + " points";
+
+
+            if(isPerfectPickup)
+            {
+                feedbackMessage = "Perfect Pickup!";
+
+
+                if(ScoreManager.Instance.PerfectPickupStreak > 1)
+                {
+                    feedbackMessage +=
+                        " X" +
+                        ScoreManager.Instance.PerfectPickupStreak;
+                }
+
+
+                feedbackMessage +=
+                    "\n+" + pickupScore + " points";
+            }
+
+
+            if(VehicleFeedbackText.Instance != null)
+            {
+                VehicleFeedbackText.Instance.Show(feedbackMessage);
+            }
         }
 
 
