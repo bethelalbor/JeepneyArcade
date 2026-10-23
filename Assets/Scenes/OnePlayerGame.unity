@@ -11017,15 +11017,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: defaultColor.b
-      value: 0.1960784
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: defaultColor.g
-      value: 0.8039216
+      value: 0.8431373
       objectReference: {fileID: 0}
     - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: defaultColor.r
-      value: 0.1960784
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: balanceFontSize
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5304946487746281196, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: defaultFontSize
