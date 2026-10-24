@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Grip multiplier applied when driving at maximum speed.")]
     public float highSpeedGripMultiplier = 3f;
 
+    [Header("Steering Settings")]
+    [Tooltip("The vehicle must reach this speed before it can begin turning. This prevents a tiny nudge from causing a large rotation.")]
+    public float minimumSteeringSpeed = 1.5f;
+    [Tooltip("Makes steering build up more gradually at low speed. Values greater than 1 make slow-speed turns harder.")]
+    [Min(1f)] public float lowSpeedSteeringExponent = 1.5f;
+
 
     [Header("Input Settings")]
     public float inputDeadzone = 0.15f;
@@ -175,7 +181,8 @@ public class PlayerMovement : MonoBehaviour
         );
 
 
-        if(Mathf.Abs(currentSpeed) <= 0.1f)
+        float speedMagnitude = Mathf.Abs(currentSpeed);
+        if(speedMagnitude <= minimumSteeringSpeed)
         {
             activeSteering = 0f;
             return;
@@ -200,15 +207,25 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        float speedFactor =
-            Mathf.Sign(currentSpeed);
+        // Scale yaw by the vehicle's actual drive speed instead of allowing
+        // full steering authority as soon as it starts moving.
+        float speedRange = Mathf.Max(maxSpeed - minimumSteeringSpeed, 0.001f);
+        float normalizedSteeringSpeed = Mathf.Clamp01(
+            (speedMagnitude - minimumSteeringSpeed) / speedRange
+        );
+        float steeringSpeedFactor = Mathf.Pow(
+            normalizedSteeringSpeed,
+            lowSpeedSteeringExponent
+        );
+        float directionFactor = Mathf.Sign(currentSpeed);
 
 
         Quaternion turn =
             Quaternion.Euler(
                 Vector3.up *
                 activeSteering *
-                speedFactor *
+                directionFactor *
+                steeringSpeedFactor *
                 rotationSpeed *
                 Time.fixedDeltaTime
             );

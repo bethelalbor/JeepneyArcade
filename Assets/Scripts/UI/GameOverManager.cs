@@ -9,6 +9,8 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverCanvas;
     public TMP_Text statusText;
     public TMP_Text emergencyActionText;
+    public TMP_Text earningsText;
+    public TMP_Text scoreText;
 
 
     [Header("Systems")]
@@ -24,6 +26,10 @@ public class GameOverManager : MonoBehaviour
 
 
     private bool vehicleIsWrecked = false;
+    private int gameOverEarnings;
+    private bool hasGameOverEarnings;
+    private int gameOverScore;
+    private bool hasGameOverScore;
 
 
 
@@ -32,10 +38,8 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = false;
 
         statusText.text = "OUT OF FUEL";
-        emergencyActionText.text =
-            "EMERGENCY REFUEL (₱" +
-            emergencyFuelCost +
-            ")";
+        emergencyActionText.text = "EMERGENCY REFUEL ₱" + emergencyFuelCost;
+        UpdateGameOverSummary();
 
         gameOverCanvas.SetActive(true);
 
@@ -49,10 +53,8 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = true;
 
         statusText.text = "WRECKED";
-        emergencyActionText.text =
-            "EMERGENCY REPAIR (₱" +
-            emergencyRepairCost +
-            ")";
+        emergencyActionText.text = "EMERGENCY REPAIR ₱" + emergencyRepairCost;
+        UpdateGameOverSummary();
 
         gameOverCanvas.SetActive(true);
 
@@ -104,8 +106,47 @@ public class GameOverManager : MonoBehaviour
 
 
 
+    private void UpdateGameOverSummary()
+    {
+        if(economyManager != null)
+        {
+            gameOverEarnings = economyManager.currentBalance;
+            hasGameOverEarnings = true;
+
+            if(earningsText != null)
+            {
+                earningsText.text = "Earnings:₱" + gameOverEarnings;
+            }
+        }
+
+        if(ScoreManager.Instance != null)
+        {
+            gameOverScore = ScoreManager.Instance.currentScore;
+            hasGameOverScore = true;
+
+            if(scoreText != null)
+            {
+                scoreText.text = "Score:" + gameOverScore;
+            }
+        }
+    }
+
+
+
     public void ExitGame()
     {
+        if(hasGameOverEarnings)
+        {
+            SavedBalance.Add(gameOverEarnings);
+            hasGameOverEarnings = false;
+        }
+
+        if(hasGameOverScore)
+        {
+            SavedHighScore.SetIfHigher(gameOverScore);
+            hasGameOverScore = false;
+        }
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("MainMenu");
