@@ -13,4 +13,11 @@ public static class SavedBalance
         PlayerPrefs.SetInt(BalanceKey, CurrentBalance + amount);
         PlayerPrefs.Save();
     }
+
+
+    public static void Set(int balance)
+    {
+        PlayerPrefs.SetInt(BalanceKey, balance);
+        PlayerPrefs.Save();
+    }
 }

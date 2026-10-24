@@ -16,4 +16,11 @@ public static class SavedHighScore
         PlayerPrefs.SetInt(HighScoreKey, score);
         PlayerPrefs.Save();
     }
+
+
+    public static void Set(int score)
+    {
+        PlayerPrefs.SetInt(HighScoreKey, score);
+        PlayerPrefs.Save();
+    }
 }

@@ -3900,6 +3900,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
   balanceText: {fileID: 1569793911}
   scoreText: {fileID: 1942729053}
+  initialEarnings: 0
+  initialScore: 0
+  resetSavedBalanceOnStart: 0
+  resetSavedScoreOnStart: 0
 --- !u!4 &1648410130
 Transform:
   m_ObjectHideFlags: 0
