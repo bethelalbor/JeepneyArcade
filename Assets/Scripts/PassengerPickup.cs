@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PassengerPickup : MonoBehaviour
 {
+    private const float PerfectPickupDistance = 5f;
+
     public GameObject passenger;
 
 
@@ -92,6 +94,12 @@ public class PassengerPickup : MonoBehaviour
 
 
 
+        float passengerTravelDistance = 0f;
+
+        Vector3 lastPassengerPosition =
+            passenger.transform.position;
+
+
         Vector3 passengerPosition =
             passenger.transform.position;
 
@@ -135,6 +143,15 @@ public class PassengerPickup : MonoBehaviour
         while(!ai.HasReachedTarget())
         {
             yield return null;
+
+            passengerTravelDistance +=
+                Vector3.Distance(
+                    lastPassengerPosition,
+                    passenger.transform.position
+                );
+
+            lastPassengerPosition =
+                passenger.transform.position;
         }
 
 
@@ -149,6 +166,15 @@ public class PassengerPickup : MonoBehaviour
         while(!ai.HasReachedTarget())
         {
             yield return null;
+
+            passengerTravelDistance +=
+                Vector3.Distance(
+                    lastPassengerPosition,
+                    passenger.transform.position
+                );
+
+            lastPassengerPosition =
+                passenger.transform.position;
         }
 
 
@@ -168,10 +194,47 @@ public class PassengerPickup : MonoBehaviour
 
 
 
-        // SCORE: successful pickup
+        // SCORE: successful pickup or perfect pickup
         if(ScoreManager.Instance != null)
         {
-            ScoreManager.Instance.AddScore(25);
+            bool isPerfectPickup =
+                passengerTravelDistance < PerfectPickupDistance;
+
+
+            int pickupScore =
+                ScoreManager.Instance.GetPassengerPickupScore(
+                    isPerfectPickup
+                );
+
+            ScoreManager.Instance.AddScore(pickupScore);
+
+
+            string feedbackMessage =
+                "+" + pickupScore + " points";
+
+
+            if(isPerfectPickup)
+            {
+                feedbackMessage = "Perfect Pickup!";
+
+
+                if(ScoreManager.Instance.PerfectPickupStreak > 1)
+                {
+                    feedbackMessage +=
+                        " X" +
+                        ScoreManager.Instance.PerfectPickupStreak;
+                }
+
+
+                feedbackMessage +=
+                    "\n+" + pickupScore + " points";
+            }
+
+
+            if(VehicleFeedbackText.Instance != null)
+            {
+                VehicleFeedbackText.Instance.Show(feedbackMessage);
+            }
         }
 
 
@@ -182,7 +245,7 @@ public class PassengerPickup : MonoBehaviour
         {
             if(ScoreManager.Instance != null)
             {
-                ScoreManager.Instance.AddScore(50);
+                ScoreManager.Instance.AddScore(100);
             }
         }
 

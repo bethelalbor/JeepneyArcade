@@ -320,6 +320,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1136278853369585895}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &6700961682056483173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6700961682056483174}
+  m_Layer: 0
+  m_Name: BalanceFeedbackSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6700961682056483174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700961682056483173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 2, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964471941249576033}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6791426698089855602
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +432,7 @@ GameObject:
   - component: {fileID: 1381744312842339314}
   - component: {fileID: 8948865119286780326}
   - component: {fileID: 6043179558636473724}
+  - component: {fileID: 5304946487746281196}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -424,6 +456,8 @@ Transform:
   - {fileID: 5280743173392171062}
   - {fileID: 1136278853369585895}
   - {fileID: 5922488245758960810}
+  - {fileID: 8655444288025119208}
+  - {fileID: 6700961682056483174}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4144674243752000838
@@ -633,6 +667,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::JeepneyPaintManager
   defaultPaintTexture: {fileID: 2800000, guid: 28d2474fa096fd543839b83f700d394b, type: 3}
   paintTexture: {fileID: 8400000, guid: 013ce8d73f0e27644aeb349ba8346ce8, type: 2}
+--- !u!114 &5304946487746281196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8108483270984563777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9f14cd18ae46e7a5070401abb614a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VehicleFeedbackText
+  feedbackSpawnPoint: {fileID: 8655444288025119208}
+  balanceFeedbackSpawnPoint: {fileID: 6700961682056483174}
+  feedbackTextPrefab: {fileID: 3605369440017081543, guid: 6a6840e294dc425a9e65be49cd886291, type: 3}
+  defaultColor: {r: 1, g: 0.8431373, b: 0, a: 1}
+  defaultFontSize: 10
+  balanceColor: {r: 0, g: 1, b: 0, a: 1}
+  balanceFontSize: 10
+--- !u!1 &8655444288025119207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8655444288025119208}
+  m_Layer: 0
+  m_Name: FeedbackSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8655444288025119208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655444288025119207}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964471941249576033}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &5675184849927890909
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -93,6 +93,12 @@ public class PassengerDropOff : MonoBehaviour
         if(ScoreManager.Instance != null)
         {
             ScoreManager.Instance.AddScore(10);
+
+
+            if(VehicleFeedbackText.Instance != null)
+            {
+                VehicleFeedbackText.Instance.Show("+10 points");
+            }
         }
 
 

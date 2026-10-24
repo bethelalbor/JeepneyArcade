@@ -24,6 +24,15 @@ public class EconomyManager : MonoBehaviour
     {
         currentBalance += amount;
 
+
+        if(VehicleFeedbackText.Instance != null)
+        {
+            VehicleFeedbackText.Instance.ShowBalance(
+                "+" + amount + "php",
+                Color.green
+            );
+        }
+
         Debug.Log(
             "Earned: " + amount +
             " | Balance: " + currentBalance
@@ -39,6 +48,15 @@ public class EconomyManager : MonoBehaviour
 
 
         currentBalance -= amount;
+
+
+        if(VehicleFeedbackText.Instance != null)
+        {
+            VehicleFeedbackText.Instance.ShowBalance(
+                "-" + amount + "php",
+                Color.red
+            );
+        }
 
 
         Debug.Log(

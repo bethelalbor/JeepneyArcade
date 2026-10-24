@@ -10,8 +10,10 @@ public class ScoreManager : MonoBehaviour
     public int currentScore = 0;
 
 
-    [Header("Combo")]
+    [Header("Perfect Pickup Combo")]
     public int cleanDeliveryStreak = 0;
+
+    public int PerfectPickupStreak => cleanDeliveryStreak;
 
 
 
@@ -37,6 +39,29 @@ public class ScoreManager : MonoBehaviour
             "Score +" + amount +
             " | Total: " + currentScore
         );
+    }
+
+
+
+    public int GetPassengerPickupScore(bool isPerfectPickup)
+    {
+        if(!isPerfectPickup)
+        {
+            cleanDeliveryStreak = 0;
+
+            return 10;
+        }
+
+
+        cleanDeliveryStreak++;
+
+
+        int comboBonus =
+            Mathf.Min(cleanDeliveryStreak - 1, 3)
+            * 10;
+
+
+        return 25 + comboBonus;
     }
 
 
