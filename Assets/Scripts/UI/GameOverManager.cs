@@ -32,10 +32,7 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = false;
 
         statusText.text = "OUT OF FUEL";
-        emergencyActionText.text =
-            "EMERGENCY REFUEL (₱" +
-            emergencyFuelCost +
-            ")";
+        emergencyActionText.text = "EMERGENCY REFUEL P" + emergencyFuelCost;
 
         gameOverCanvas.SetActive(true);
 
@@ -49,10 +46,7 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = true;
 
         statusText.text = "WRECKED";
-        emergencyActionText.text =
-            "EMERGENCY REPAIR (₱" +
-            emergencyRepairCost +
-            ")";
+        emergencyActionText.text = "EMERGENCY REPAIR P" + emergencyRepairCost;
 
         gameOverCanvas.SetActive(true);
 
