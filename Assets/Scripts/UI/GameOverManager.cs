@@ -9,6 +9,8 @@ public class GameOverManager : MonoBehaviour
     public GameObject gameOverCanvas;
     public TMP_Text statusText;
     public TMP_Text emergencyActionText;
+    public TMP_Text earningsText;
+    public TMP_Text scoreText;
 
 
     [Header("Systems")]
@@ -32,7 +34,8 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = false;
 
         statusText.text = "OUT OF FUEL";
-        emergencyActionText.text = "EMERGENCY REFUEL P" + emergencyFuelCost;
+        emergencyActionText.text = "EMERGENCY REFUEL ₱" + emergencyFuelCost;
+        UpdateGameOverSummary();
 
         gameOverCanvas.SetActive(true);
 
@@ -46,7 +49,8 @@ public class GameOverManager : MonoBehaviour
         vehicleIsWrecked = true;
 
         statusText.text = "WRECKED";
-        emergencyActionText.text = "EMERGENCY REPAIR P" + emergencyRepairCost;
+        emergencyActionText.text = "EMERGENCY REPAIR ₱" + emergencyRepairCost;
+        UpdateGameOverSummary();
 
         gameOverCanvas.SetActive(true);
 
@@ -93,6 +97,21 @@ public class GameOverManager : MonoBehaviour
             vehicleHealth.RepairVehicle();
 
             gameOverCanvas.SetActive(false);
+        }
+    }
+
+
+
+    private void UpdateGameOverSummary()
+    {
+        if(earningsText != null && economyManager != null)
+        {
+            earningsText.text = "Earnings:₱" + economyManager.currentBalance;
+        }
+
+        if(scoreText != null && ScoreManager.Instance != null)
+        {
+            scoreText.text = "Score:" + ScoreManager.Instance.currentScore;
         }
     }
 
