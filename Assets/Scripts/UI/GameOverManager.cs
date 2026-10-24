@@ -28,6 +28,8 @@ public class GameOverManager : MonoBehaviour
     private bool vehicleIsWrecked = false;
     private int gameOverEarnings;
     private bool hasGameOverEarnings;
+    private int gameOverScore;
+    private bool hasGameOverScore;
 
 
 
@@ -117,9 +119,15 @@ public class GameOverManager : MonoBehaviour
             }
         }
 
-        if(scoreText != null && ScoreManager.Instance != null)
+        if(ScoreManager.Instance != null)
         {
-            scoreText.text = "Score:" + ScoreManager.Instance.currentScore;
+            gameOverScore = ScoreManager.Instance.currentScore;
+            hasGameOverScore = true;
+
+            if(scoreText != null)
+            {
+                scoreText.text = "Score:" + gameOverScore;
+            }
         }
     }
 
@@ -131,6 +139,12 @@ public class GameOverManager : MonoBehaviour
         {
             SavedBalance.Add(gameOverEarnings);
             hasGameOverEarnings = false;
+        }
+
+        if(hasGameOverScore)
+        {
+            SavedHighScore.SetIfHigher(gameOverScore);
+            hasGameOverScore = false;
         }
 
         Time.timeScale = 1f;
