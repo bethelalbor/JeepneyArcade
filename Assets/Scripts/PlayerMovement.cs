@@ -7,7 +7,15 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 4f;
     public float acceleration = 3f;
     public float deceleration = 3f;
+    [Tooltip("How quickly the vehicle slows when reverse is pressed while moving forward, or vice versa.")]
+    public float brakeDeceleration = 10f;
+    [Tooltip("Opposite-direction input stops the vehicle immediately at or below this speed before reversing.")]
+    public float brakeToReverseSpeedThreshold = 0.25f;
     public float rotationSpeed = 25f;
+    [Tooltip("How quickly sideways momentum is reduced while driving.")]
+    public float grip = 6f;
+    [Tooltip("Grip multiplier applied when driving at maximum speed.")]
+    public float highSpeedGripMultiplier = 3f;
 
 
     [Header("Input Settings")]
@@ -86,10 +94,31 @@ public class PlayerMovement : MonoBehaviour
 
         if(throttle != 0)
         {
-            currentSpeed +=
-                throttle *
-                acceleration *
-                Time.deltaTime;
+            bool opposingDirection = currentSpeed != 0f &&
+                Mathf.Sign(throttle) != Mathf.Sign(currentSpeed);
+
+            if (opposingDirection)
+            {
+                if (Mathf.Abs(currentSpeed) <= brakeToReverseSpeedThreshold)
+                {
+                    currentSpeed = 0f;
+                }
+                else
+                {
+                    currentSpeed = Mathf.MoveTowards(
+                        currentSpeed,
+                        0f,
+                        brakeDeceleration * Time.deltaTime
+                    );
+                }
+            }
+            else
+            {
+                currentSpeed +=
+                    throttle *
+                    acceleration *
+                    Time.deltaTime;
+            }
         }
         else
         {
@@ -120,17 +149,30 @@ public class PlayerMovement : MonoBehaviour
             return;
 
 
-        Vector3 horizontalVelocity =
-            transform.forward *
-            currentSpeed;
+        // Keep forward drive responsive while allowing lateral momentum to carry
+        // through a turn. Grip gradually brings that sideways motion back in line.
+        Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
+        localVelocity.z = currentSpeed;
+        float speedPercent = maxSpeed > 0f
+            ? Mathf.Clamp01(Mathf.Abs(localVelocity.z) / maxSpeed)
+            : 0f;
+        float lateralGrip = Mathf.Lerp(
+            grip,
+            grip * highSpeedGripMultiplier,
+            speedPercent
+        );
+        localVelocity.x = Mathf.MoveTowards(
+            localVelocity.x,
+            0f,
+            lateralGrip * Time.fixedDeltaTime
+        );
 
-
-        rb.linearVelocity =
-            new Vector3(
-                horizontalVelocity.x,
-                rb.linearVelocity.y,
-                horizontalVelocity.z
-            );
+        Vector3 drivenVelocity = transform.TransformDirection(localVelocity);
+        rb.linearVelocity = new Vector3(
+            drivenVelocity.x,
+            rb.linearVelocity.y,
+            drivenVelocity.z
+        );
 
 
         if(Mathf.Abs(currentSpeed) <= 0.1f)

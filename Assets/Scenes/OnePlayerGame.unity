@@ -2213,6 +2213,8 @@ MonoBehaviour:
   localOffset: {x: 0, y: 16, z: -16}
   followSmoothness: 4
   rotationSmoothness: 4
+  turnFollowDelay: 0.2
+  turnFollowCatchUpDuration: 0.75
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
@@ -10986,6 +10988,18 @@ PrefabInstance:
     - target: {fileID: 3190060584193735248, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: fuelConsumptionRate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280757528596203875, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: maxSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280757528596203875, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: deceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3280757528596203875, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: rotationSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3736783092167067033, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: currentMoney
