@@ -26,6 +26,8 @@ public class GameOverManager : MonoBehaviour
 
 
     private bool vehicleIsWrecked = false;
+    private int gameOverEarnings;
+    private bool hasGameOverEarnings;
 
 
 
@@ -104,9 +106,15 @@ public class GameOverManager : MonoBehaviour
 
     private void UpdateGameOverSummary()
     {
-        if(earningsText != null && economyManager != null)
+        if(economyManager != null)
         {
-            earningsText.text = "Earnings:₱" + economyManager.currentBalance;
+            gameOverEarnings = economyManager.currentBalance;
+            hasGameOverEarnings = true;
+
+            if(earningsText != null)
+            {
+                earningsText.text = "Earnings:₱" + gameOverEarnings;
+            }
         }
 
         if(scoreText != null && ScoreManager.Instance != null)
@@ -119,6 +127,12 @@ public class GameOverManager : MonoBehaviour
 
     public void ExitGame()
     {
+        if(hasGameOverEarnings)
+        {
+            SavedBalance.Add(gameOverEarnings);
+            hasGameOverEarnings = false;
+        }
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("MainMenu");
