@@ -12,13 +12,12 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Input Settings")]
     public float inputDeadzone = 0.15f;
-    public float steeringSensitivity = 3f;
-    public float maxSteerAngle = 30f;
+    public float steeringBuildUpSpeed = 8f;
 
 
     private float currentSpeed = 0f;
     private float turnInput = 0f;
-    private float steerAngle = 0f;
+    private float activeSteering = 0f;
 
 
     private Rigidbody rb;
@@ -111,18 +110,6 @@ public class PlayerMovement : MonoBehaviour
                 maxSpeed
             );
 
-
-        float targetSteerAngle =
-            turnInput * maxSteerAngle;
-
-
-        steerAngle =
-            Mathf.MoveTowards(
-                steerAngle,
-                targetSteerAngle,
-                steeringSensitivity *
-                Time.deltaTime
-            );
     }
 
 
@@ -146,31 +133,49 @@ public class PlayerMovement : MonoBehaviour
             );
 
 
-        if(Mathf.Abs(currentSpeed) > 0.1f)
+        if(Mathf.Abs(currentSpeed) <= 0.1f)
         {
-            float speedFactor =
-                Mathf.Sign(currentSpeed);
+            activeSteering = 0f;
+            return;
+        }
 
 
-            float normalizedSteer =
-                steerAngle / maxSteerAngle;
+        if(turnInput == 0f)
+        {
+            activeSteering = 0f;
+        }
+        else
+        {
+            if(Mathf.Sign(activeSteering) != Mathf.Sign(turnInput))
+                activeSteering = 0f;
 
 
-            Quaternion turn =
-                Quaternion.Euler(
-                    Vector3.up *
-                    normalizedSteer *
-                    speedFactor *
-                    rotationSpeed *
-                    Time.fixedDeltaTime
-                );
-
-
-            rb.MoveRotation(
-                rb.rotation *
-                turn
+            activeSteering = Mathf.MoveTowards(
+                activeSteering,
+                turnInput,
+                steeringBuildUpSpeed * Time.fixedDeltaTime
             );
         }
+
+
+        float speedFactor =
+            Mathf.Sign(currentSpeed);
+
+
+        Quaternion turn =
+            Quaternion.Euler(
+                Vector3.up *
+                activeSteering *
+                speedFactor *
+                rotationSpeed *
+                Time.fixedDeltaTime
+            );
+
+
+        rb.MoveRotation(
+            rb.rotation *
+            turn
+        );
     }
 
 
@@ -194,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentSpeed = 0f;
         turnInput = 0f;
-        steerAngle = 0f;
+        activeSteering = 0f;
 
 
         rb.linearVelocity = Vector3.zero;
@@ -277,5 +282,6 @@ public class PlayerMovement : MonoBehaviour
         mobileSteerRight = false;
         mobileAccelerating = false;
         mobileBraking = false;
+        activeSteering = 0f;
     }
 }
