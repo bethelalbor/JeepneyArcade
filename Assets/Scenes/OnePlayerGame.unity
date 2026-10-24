@@ -2213,6 +2213,8 @@ MonoBehaviour:
   localOffset: {x: 0, y: 16, z: -16}
   followSmoothness: 4
   rotationSmoothness: 4
+  turnFollowDelay: 0.2
+  turnFollowCatchUpDuration: 0.75
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
