@@ -6450,8 +6450,8 @@ MonoBehaviour:
   fuelSystem: {fileID: 753148651}
   vehicleHealth: {fileID: 947937436}
   economyManager: {fileID: 606885693}
-  emergencyFuelCost: 10
-  emergencyRepairCost: 10
+  emergencyFuelCost: 200
+  emergencyRepairCost: 200
 --- !u!114 &1025501460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11686,6 +11686,10 @@ PrefabInstance:
     - target: {fileID: 8108483270984563777, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948865119286780326, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
+      propertyPath: collisionDamageMultiplier
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3736783092167067033, guid: 03e94a028cfa28c49beb3166d639ae12, type: 3}
