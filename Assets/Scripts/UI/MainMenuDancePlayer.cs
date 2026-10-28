@@ -1,22 +1,23 @@
 using UnityEngine;
 
 /// <summary>
-/// Starts the menu character's dance when its MainMenu scene instance becomes active.
+/// Enables the menu character's dance-only Animator transition while its
+/// MainMenu scene instance is active.
 /// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
 public sealed class MainMenuDancePlayer : MonoBehaviour
 {
-    [Tooltip("Full Animator state path to play when this MainMenu-only component is enabled.")]
-    [SerializeField] private string stateName = "Base Layer.Dance_01";
-    [Min(0)] [SerializeField] private int layerIndex;
-    [Range(0f, 1f)] [SerializeField] private float normalizedStartTime;
+    [Tooltip("Boolean Animator parameter that enables the Dance_01 transition.")]
+    [SerializeField] private string danceParameterName = "IsDancing";
 
     private Animator animator;
+    private int danceParameterHash;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        danceParameterHash = Animator.StringToHash(danceParameterName);
     }
 
     private void OnEnable()
@@ -24,19 +25,15 @@ public sealed class MainMenuDancePlayer : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
-        if (animator == null)
-        {
+        if (animator != null)
+            animator.SetBool(danceParameterHash, true);
+        else
             Debug.LogError("MainMenuDancePlayer requires an Animator.", this);
-            return;
-        }
+    }
 
-        int stateHash = Animator.StringToHash(stateName);
-        if (!animator.HasState(layerIndex, stateHash))
-        {
-            Debug.LogError($"MainMenuDancePlayer could not find '{stateName}' on layer {layerIndex}.", this);
-            return;
-        }
-
-        animator.Play(stateHash, layerIndex, normalizedStartTime);
+    private void OnDisable()
+    {
+        if (animator != null)
+            animator.SetBool(danceParameterHash, false);
     }
 }
