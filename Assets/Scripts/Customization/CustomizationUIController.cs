@@ -220,6 +220,12 @@ public class CustomizationUIController : MonoBehaviour
         if (eraserButton != null)
             eraserButton.onClick.AddListener(() => painter.SetEraseMode(true));
         UpdateHistoryButtonStates();
+
+        if (undoButton != null)
+          undoButton.onClick.AddListener(painter.Undo);
+
+        if (redoButton != null)
+          redoButton.onClick.AddListener(painter.Redo);
     }
 
     private void UpdateHistoryButtonStates()
