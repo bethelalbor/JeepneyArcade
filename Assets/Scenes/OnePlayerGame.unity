@@ -6423,6 +6423,7 @@ GameObject:
   - component: {fileID: 1025501461}
   - component: {fileID: 1025501460}
   - component: {fileID: 1025501459}
+  - component: {fileID: 1025501464}
   m_Layer: 5
   m_Name: GameOverCanvas
   m_TagString: Untagged
@@ -6452,6 +6453,20 @@ MonoBehaviour:
   economyManager: {fileID: 606885693}
   emergencyFuelCost: 200
   emergencyRepairCost: 200
+--- !u!114 &1025501464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025501458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3f5a7c9b1d4f60ab8e2d6c5f314978, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UIFocusAndCancel
+  initialSelection: {fileID: 1322486869}
+  cancelButton: {fileID: 1939435720}
 --- !u!114 &1025501460
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 910000004}
   - component: {fileID: 910000005}
   - component: {fileID: 910000006}
+  - component: {fileID: 910000007}
   m_Layer: 5
   m_Name: CustomizationCanvas
   m_TagString: Untagged
@@ -634,6 +635,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &910000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3f5a7c9b1d4f60ab8e2d6c5f314978, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UIFocusAndCancel
+  initialSelection: {fileID: 910000022}
+  cancelButton: {fileID: 910000052}
 --- !u!224 &910000002
 RectTransform:
   m_ObjectHideFlags: 0
