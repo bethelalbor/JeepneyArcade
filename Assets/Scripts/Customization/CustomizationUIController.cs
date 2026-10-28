@@ -23,6 +23,12 @@ public class CustomizationUIController : MonoBehaviour
     [SerializeField] private float minimumCursorPixels = 24f;
     [SerializeField] private float maximumCursorPixels = 132f;
 
+    [Header("Brush Size Settings")]
+    [Tooltip("Smallest brush size available from the Brush Size Slider.")]
+    [Min(0.001f)] [SerializeField] private float minimumBrushSize = 0.005f;
+    [Tooltip("Largest brush size available from the Brush Size Slider.")]
+    [Min(0.001f)] [SerializeField] private float maximumBrushSize = 0.1f;
+
     [Header("Persistent Painting Controls")]
     [SerializeField] private Slider brushSizeSlider;
     [SerializeField] private Slider brushOpacitySlider;
@@ -137,7 +143,7 @@ public class CustomizationUIController : MonoBehaviour
 
         RectTransform cursorRect = brushCursor.rectTransform;
         cursorRect.position = screenPosition;
-        float sizeT = Mathf.InverseLerp(0.005f, 0.1f, painter.BrushSize);
+        float sizeT = Mathf.InverseLerp(minimumBrushSize, maximumBrushSize, painter.BrushSize);
         float cursorSize = Mathf.Lerp(minimumCursorPixels, maximumCursorPixels, sizeT);
         cursorRect.sizeDelta = Vector2.one * cursorSize;
 
@@ -182,6 +188,12 @@ public class CustomizationUIController : MonoBehaviour
         cursorHiddenSystemCursor = !visible;
     }
 
+    private void OnValidate()
+    {
+        minimumBrushSize = Mathf.Max(0.001f, minimumBrushSize);
+        maximumBrushSize = Mathf.Max(minimumBrushSize, maximumBrushSize);
+    }
+
     private void InitializePersistentPaintingControls()
     {
         if (painter == null)
@@ -189,8 +201,8 @@ public class CustomizationUIController : MonoBehaviour
 
         if (brushSizeSlider != null)
         {
-            brushSizeSlider.minValue = 0.005f;
-            brushSizeSlider.maxValue = 0.1f;
+            brushSizeSlider.minValue = minimumBrushSize;
+            brushSizeSlider.maxValue = maximumBrushSize;
             brushSizeSlider.SetValueWithoutNotify(Mathf.Clamp(painter.BrushSize, brushSizeSlider.minValue, brushSizeSlider.maxValue));
             brushSizeSlider.onValueChanged.AddListener(painter.SetBrushSize);
         }
