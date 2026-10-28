@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class PassengerManager : MonoBehaviour
 {
+    public event System.Action PassengersOnBoardChanged;
+
     public List<Transform> seats;
 
     public List<GameObject> passengersOnBoard =
@@ -94,6 +96,8 @@ public class PassengerManager : MonoBehaviour
 
         passengersOnBoard.Add(passenger);
 
+        PassengersOnBoardChanged?.Invoke();
+
 
         PassengerData data =
             passenger.GetComponent<PassengerData>();
@@ -133,5 +137,7 @@ public class PassengerManager : MonoBehaviour
 
 
         passengersOnBoard.Remove(passenger);
+
+        PassengersOnBoardChanged?.Invoke();
     }
 }

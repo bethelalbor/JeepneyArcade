@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 493564169}
   - component: {fileID: 493564168}
   - component: {fileID: 493564167}
+  - component: {fileID: 493564171}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -973,6 +974,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &493564171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493564166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3f5a7c9b1d4f60ab8e2d6c5f314978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIFocusAndCancel
+  initialSelection: {fileID: 930063782}
+  cancelButton: {fileID: 238430014}
 --- !u!4 &520929725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0064eb002f3790247969e12119bbf9d2, type: 3}
@@ -4564,19 +4579,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.10653763
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: -0.99430877
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4584,7 +4599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
+      value: -192.232
       objectReference: {fileID: 0}
     - target: {fileID: 6604366753027860378, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -4598,26 +4613,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2010311378}
   m_SourcePrefab: {fileID: 100100000, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
---- !u!1 &2010311377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 992113209796122119, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
-  m_PrefabInstance: {fileID: 1938731381}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2010311378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010311377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d9a5d3c7f541b1a8e2d94f0e63c1aa, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuDancePlayer
-  stateName: Base Layer.Dance_01
-  layerIndex: 0
-  normalizedStartTime: 0
 --- !u!1 &1942729051
 GameObject:
   m_ObjectHideFlags: 0
@@ -4755,6 +4750,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942729051}
   m_CullTransparentMesh: 1
+--- !u!1 &2010311377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 992113209796122119, guid: 0b04ae9593c7f654c9a835fd8e3ef312, type: 3}
+  m_PrefabInstance: {fileID: 1938731381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2010311378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010311377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d9a5d3c7f541b1a8e2d94f0e63c1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenuDancePlayer
+  danceParameterName: IsDancing
 --- !u!1 &2029659411
 GameObject:
   m_ObjectHideFlags: 0

@@ -242,17 +242,15 @@ public class CameraFollow : MonoBehaviour
     {
         Vector2 panDelta = Vector2.zero;
 
-        if (Input.touchCount == 1)
+        Touchscreen touchscreen = Touchscreen.current;
+        if (touchscreen != null && touchscreen.primaryTouch.press.isPressed)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == UnityEngine.TouchPhase.Moved)
-                panDelta = touch.deltaPosition * touchPanSensitivity;
+            if (touchscreen.primaryTouch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+                panDelta = touchscreen.primaryTouch.delta.ReadValue() * touchPanSensitivity;
         }
-        else if (Input.touchCount == 0 && Input.GetMouseButton(0))
+        else if (Mouse.current != null && Mouse.current.leftButton.isPressed)
         {
-            panDelta = new Vector2(
-                Input.GetAxisRaw("Mouse X"),
-                Input.GetAxisRaw("Mouse Y")) * mousePanSensitivity;
+            panDelta = Mouse.current.delta.ReadValue() * mousePanSensitivity;
         }
 
         if (Gamepad.current != null)
