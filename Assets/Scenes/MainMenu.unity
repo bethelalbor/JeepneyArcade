@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 238430016}
   - component: {fileID: 238430015}
   - component: {fileID: 238430014}
+  - component: {fileID: 238430017}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -273,6 +274,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &238430017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238430012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &238430015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1203,6 +1219,7 @@ GameObject:
   - component: {fileID: 691698446}
   - component: {fileID: 691698445}
   - component: {fileID: 691698444}
+  - component: {fileID: 691698447}
   m_Layer: 5
   m_Name: CustomizeButton
   m_TagString: Untagged
@@ -1286,6 +1303,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &691698447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691698442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &691698445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1951,6 +1983,7 @@ GameObject:
   - component: {fileID: 930063784}
   - component: {fileID: 930063783}
   - component: {fileID: 930063782}
+  - component: {fileID: 930063785}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -2034,6 +2067,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &930063785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930063780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &930063783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2951,6 +2999,7 @@ GameObject:
   - component: {fileID: 1288577132}
   - component: {fileID: 1288577131}
   - component: {fileID: 1288577130}
+  - component: {fileID: 1288577133}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -3022,6 +3071,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1288577133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288577128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &1288577131
 MonoBehaviour:
   m_ObjectHideFlags: 0

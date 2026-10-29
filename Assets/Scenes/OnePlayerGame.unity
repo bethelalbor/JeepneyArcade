@@ -8320,6 +8320,7 @@ GameObject:
   - component: {fileID: 1322486871}
   - component: {fileID: 1322486870}
   - component: {fileID: 1322486869}
+  - component: {fileID: 3301000001}
   m_Layer: 5
   m_Name: EmergencyRefuelButton
   m_TagString: Untagged
@@ -8391,6 +8392,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3301000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322486867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &1322486870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,6 +8675,7 @@ GameObject:
   - component: {fileID: 1404541835}
   - component: {fileID: 1404541834}
   - component: {fileID: 1404541833}
+  - component: {fileID: 3301000002}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -8742,6 +8759,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3301000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404541831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &1404541834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9268,6 +9300,7 @@ GameObject:
   - component: {fileID: 1507463172}
   - component: {fileID: 1507463171}
   - component: {fileID: 1507463170}
+  - component: {fileID: 3301000003}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -9351,6 +9384,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3301000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507463168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &1507463171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11388,6 +11436,7 @@ GameObject:
   - component: {fileID: 1939435722}
   - component: {fileID: 1939435721}
   - component: {fileID: 1939435720}
+  - component: {fileID: 3301000004}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -11471,6 +11520,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3301000004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939435718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1c0a66f2be4db4a49ce78b7eac05dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtonSelectionFeedback
+  selectedScale: 1.05
+  tiltDegrees: 3
+  transitionSpeed: 12
 --- !u!114 &1939435721
 MonoBehaviour:
   m_ObjectHideFlags: 0
