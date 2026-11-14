@@ -9,6 +9,10 @@ public class VehicleHealth : MonoBehaviour
 
     [Header("Collision Damage")]
     public float collisionDamageMultiplier = 5f;
+    [Tooltip("Maximum damage a single collision can deal to the vehicle.")]
+    [Min(0f)] public float maximumCollisionDamage = 40f;
+    [Tooltip("Seconds to wait before another collision can damage the vehicle.")]
+    [Min(0f)] public float collisionDamageCooldown = 1f;
 
 
     [Header("Repairing")]
@@ -18,6 +22,8 @@ public class VehicleHealth : MonoBehaviour
     private PlayerMovement playerMovement;
 
     private CameraFollow cameraFollow;
+
+    private float nextCollisionDamageTime;
 
 
 
@@ -36,12 +42,23 @@ public class VehicleHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(Time.time < nextCollisionDamageTime)
+            return;
+
+
         float impactForce =
             collision.relativeVelocity.magnitude;
 
 
         float damage =
-            impactForce * collisionDamageMultiplier;
+            Mathf.Min(
+                impactForce * collisionDamageMultiplier,
+                maximumCollisionDamage
+            );
+
+
+        nextCollisionDamageTime =
+            Time.time + collisionDamageCooldown;
 
 
         TakeDamage(damage);

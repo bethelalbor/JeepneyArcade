@@ -159,6 +159,7 @@ MonoBehaviour:
   paintablePanelName: Side_Panel_Left
   maxRaycastDistance: 100
   paintManager: {fileID: 7472837458123456722}
+  brushShader: {fileID: 4800000, guid: 92bf2548e3854686ae0c30a10ac3a824, type: 3}
   paintingEnabled: 1
   brushColor: {r: 1, g: 0, b: 0, a: 1}
   brushSize: 0.025

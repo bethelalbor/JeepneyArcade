@@ -39,15 +39,18 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
+    - 63d9a091a22e23946a503442aeaa3005: 21300000
     - 116fab43254f4434faf496210b32de61: 21300000
     - 9a43ec64c691fbe46b6178d1645af26e: 21300000
     - 83eb6cb40dc5b334da7c66cad0ff145c: 21300000
     - d6e63155dd6982844b4306f6d4b0d154: 21300000
     - 1a4044d5f10b1e343af5d2370ab3e233: 21300000
     - 520c81e5da696d34a9ef691093252afb: 21300000
+    - bce131464238a7241a600349d2280491: 21300000
     - 1156d927e37b8e147bc1c1bf887b6e78: 21300000
     - 5859c5376b9a9ef4bb1b7935d9e779b3: 21300000
     - 5d990aa7dd95e7b468e0eee668948af2: 21300000
+    - 3aa17fe7ac06f2e42be186f9b5a00fc9: 21300000
     - 29345f186e6cbb84cb3d1e8de7a39c42: 21300000
     - 2eda7e88bf6e988409a29e269d9dfd95: 21300000
     - a4c14a19326899c489326c0d13dd6f7c: 21300000
@@ -59,17 +62,22 @@ SpriteAtlas:
     - dc06fd6bf1211664f9c0465b8ffa1673: 21300000
     - c2084b8bf06485b429b1a2f33dff314e: 21300000
     - e7561aec2ac33de479af8610634e6fc0: 21300000
+    - 44c8a5fcb4008934ebd9c0f40ac58df5: 21300000
+    - 6155a02ebf8d9114bafb8f88a4093bbb: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 63d9a091a22e23946a503442aeaa3005, type: 3}
   - {fileID: 21300000, guid: 116fab43254f4434faf496210b32de61, type: 3}
   - {fileID: 21300000, guid: 9a43ec64c691fbe46b6178d1645af26e, type: 3}
   - {fileID: 21300000, guid: 83eb6cb40dc5b334da7c66cad0ff145c, type: 3}
   - {fileID: 21300000, guid: d6e63155dd6982844b4306f6d4b0d154, type: 3}
   - {fileID: 21300000, guid: 1a4044d5f10b1e343af5d2370ab3e233, type: 3}
   - {fileID: 21300000, guid: 520c81e5da696d34a9ef691093252afb, type: 3}
+  - {fileID: 21300000, guid: bce131464238a7241a600349d2280491, type: 3}
   - {fileID: 21300000, guid: 1156d927e37b8e147bc1c1bf887b6e78, type: 3}
   - {fileID: 21300000, guid: 5859c5376b9a9ef4bb1b7935d9e779b3, type: 3}
   - {fileID: 21300000, guid: 5d990aa7dd95e7b468e0eee668948af2, type: 3}
+  - {fileID: 21300000, guid: 3aa17fe7ac06f2e42be186f9b5a00fc9, type: 3}
   - {fileID: 21300000, guid: 29345f186e6cbb84cb3d1e8de7a39c42, type: 3}
   - {fileID: 21300000, guid: 2eda7e88bf6e988409a29e269d9dfd95, type: 3}
   - {fileID: 21300000, guid: a4c14a19326899c489326c0d13dd6f7c, type: 3}
@@ -81,16 +89,21 @@ SpriteAtlas:
   - {fileID: 21300000, guid: dc06fd6bf1211664f9c0465b8ffa1673, type: 3}
   - {fileID: 21300000, guid: c2084b8bf06485b429b1a2f33dff314e, type: 3}
   - {fileID: 21300000, guid: e7561aec2ac33de479af8610634e6fc0, type: 3}
+  - {fileID: 21300000, guid: 44c8a5fcb4008934ebd9c0f40ac58df5, type: 3}
+  - {fileID: 21300000, guid: 6155a02ebf8d9114bafb8f88a4093bbb, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Arangkada_appicon
   - Play
   - Accelerate-pressed
   - Pause
   - Score-container
   - Camera
   - Brake
+  - Button-gray-selected
   - Fuel-container
   - Arrow-right
   - Arrow-left
+  - Button-gray-normal
   - Pause-pressed
   - Arrow-left-pressed
   - Accelerate
@@ -102,6 +115,8 @@ SpriteAtlas:
   - Arrow-right-pressed
   - Play-pressed
   - Balance-container
+  - Button-white-normal
+  - Paintbrush
   m_RenderDataMap: {}
   m_Tag: Arangkada_UI_Atlas
   m_IsVariant: 0

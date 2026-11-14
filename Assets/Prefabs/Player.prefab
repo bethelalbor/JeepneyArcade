@@ -652,6 +652,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   collisionDamageMultiplier: 5
+  maximumCollisionDamage: 40
+  collisionDamageCooldown: 1
   repairRate: 20
 --- !u!114 &6043179558636473724
 MonoBehaviour:

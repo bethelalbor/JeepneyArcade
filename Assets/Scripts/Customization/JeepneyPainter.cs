@@ -20,6 +20,7 @@ public class JeepneyPainter : MonoBehaviour
 
     [Header("Runtime Paint")]
     [SerializeField] private JeepneyPaintManager paintManager;
+    [SerializeField] private Shader brushShader;
     [SerializeField] private bool paintingEnabled = true;
     [SerializeField] private Color brushColor = Color.red;
     [Range(0.001f, 0.25f)] [SerializeField] private float brushSize = 0.025f;
@@ -249,10 +250,12 @@ public class JeepneyPainter : MonoBehaviour
 
     private void CreateBrushMaterial()
     {
-        Shader shader = Shader.Find(BrushShaderName);
+        // A serialized reference keeps the shader in player builds. Shader.Find alone
+        // cannot establish a build-time dependency, so the shader may be stripped.
+        Shader shader = brushShader != null ? brushShader : Shader.Find(BrushShaderName);
         if (shader == null)
         {
-            Debug.LogError($"JeepneyPainter could not find '{BrushShaderName}'.", this);
+            Debug.LogError($"JeepneyPainter has no brush shader. Assign '{BrushShaderName}' so it is included in player builds.", this);
             return;
         }
         brushMaterial = new Material(shader) { name = "Runtime Jeepney Paint Brush Material", hideFlags = HideFlags.DontSave };
