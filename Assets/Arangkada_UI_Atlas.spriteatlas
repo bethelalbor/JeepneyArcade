@@ -63,7 +63,6 @@ SpriteAtlas:
     - c2084b8bf06485b429b1a2f33dff314e: 21300000
     - e7561aec2ac33de479af8610634e6fc0: 21300000
     - 44c8a5fcb4008934ebd9c0f40ac58df5: 21300000
-    - a21090ed09dcbdd46a67a3f4606953ef: 21300000
     - 6155a02ebf8d9114bafb8f88a4093bbb: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -91,7 +90,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: c2084b8bf06485b429b1a2f33dff314e, type: 3}
   - {fileID: 21300000, guid: e7561aec2ac33de479af8610634e6fc0, type: 3}
   - {fileID: 21300000, guid: 44c8a5fcb4008934ebd9c0f40ac58df5, type: 3}
-  - {fileID: 21300000, guid: a21090ed09dcbdd46a67a3f4606953ef, type: 3}
   - {fileID: 21300000, guid: 6155a02ebf8d9114bafb8f88a4093bbb, type: 3}
   m_PackedSpriteNamesToIndex:
   - Arangkada_appicon
@@ -118,7 +116,6 @@ SpriteAtlas:
   - Play-pressed
   - Balance-container
   - Button-white-normal
-  - Arangkada_logo
   - Paintbrush
   m_RenderDataMap: {}
   m_Tag: Arangkada_UI_Atlas
