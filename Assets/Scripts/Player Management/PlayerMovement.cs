@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void Update()
+    void Update() //eto naghandle ng input at movement logic
     {
         if(movementLocked)
             return;
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                currentSpeed +=
+                currentSpeed += //eto yung sa acceleration
                     throttle *
                     acceleration *
                     Time.deltaTime;
@@ -128,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            currentSpeed =
+            currentSpeed = //reduce ng speed gradually kapag walang input
                 Mathf.Lerp(
                     currentSpeed,
                     0f,
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        currentSpeed =
+        currentSpeed = //restrict speed to max and half non pag nagreverse
             Mathf.Clamp(
                 currentSpeed,
                 -maxSpeed / 2f,
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    void FixedUpdate()
+    void FixedUpdate() //eto nagapply ng physics sa vehicle movement
     {
         if(movementLocked)
             return;
@@ -173,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
             lateralGrip * Time.fixedDeltaTime
         );
 
-        Vector3 drivenVelocity = transform.TransformDirection(localVelocity);
+        Vector3 drivenVelocity = transform.TransformDirection(localVelocity); //moving without changing vertical velocity or magtip over
         rb.linearVelocity = new Vector3(
             drivenVelocity.x,
             rb.linearVelocity.y,
@@ -206,9 +206,6 @@ public class PlayerMovement : MonoBehaviour
             );
         }
 
-
-        // Scale yaw by the vehicle's actual drive speed instead of allowing
-        // full steering authority as soon as it starts moving.
         float speedRange = Mathf.Max(maxSpeed - minimumSteeringSpeed, 0.001f);
         float normalizedSteeringSpeed = Mathf.Clamp01(
             (speedMagnitude - minimumSteeringSpeed) / speedRange
@@ -231,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
             );
 
 
-        rb.MoveRotation(
+        rb.MoveRotation( //pang steer
             rb.rotation *
             turn
         );
@@ -284,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    public void SetMobileThrottle(bool accelerating, bool isPressed)
+    public void SetMobileThrottle(bool accelerating, bool isPressed) //check if nakapindot sa accelerate or brake button sa mobile
     {
         if (accelerating)
             mobileAccelerating = isPressed;

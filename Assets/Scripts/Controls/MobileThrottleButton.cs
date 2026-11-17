@@ -11,13 +11,13 @@ public class MobileThrottleButton : MonoBehaviour, IPointerDownHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         if (playerMovement == null)
-            playerMovement = FindAnyObjectByType<PlayerMovement>();
+            playerMovement = FindAnyObjectByType<PlayerMovement>(); //search for the PlayerMovement script in the scene pag nagmultiple players, this will find the first one it encounters so di sya ideal for multiplayer, but for single player it should be fine
 
         if (playerMovement == null)
             return;
 
         isPressed = true;
-        playerMovement.SetMobileThrottle(accelerating, true);
+        playerMovement.SetMobileThrottle(accelerating, true); //notify the PlayerMovement script that the throttle button is pressed
     }
 
     public void OnPointerUp(PointerEventData eventData)
