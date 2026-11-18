@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BGCMap.unity
     guid: b5e10fcade4fb024d90cbd5da60ab5cb
   - enabled: 1
+    path: Assets/Scenes/Settings.unity
+    guid: 3b4fe8711e1718c4b9a8dc7d86801c35
+  - enabled: 1
     path: Assets/Scenes/Customization.unity
     guid: c49819abd5fb08943a89dbeac50dd6e3
   - enabled: 0
