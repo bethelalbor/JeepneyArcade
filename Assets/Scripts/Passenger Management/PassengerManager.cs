@@ -101,17 +101,16 @@ public class PassengerManager : MonoBehaviour
 
         passengersOnBoard.Add(passenger);
 
-        PassengersOnBoardChanged?.Invoke();
-
-
         PassengerData data =
             passenger.GetComponent<PassengerData>();
 
         if(data != null)
         {
             data.isOnVehicle = true;
+            data.LeavePickupQueue();
         }
 
+        PassengersOnBoardChanged?.Invoke();
 
         return true;
     }
