@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7e09cd1fd402e4a811735c8438467c, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::JeepneyArcade.EditorTools.CityColliderProfile
+  entries:
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7310352104645679753-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.030
+    note: Refitted. Review and approve before updating.
+    shape: 0
+    center: {x: -1462.9055, y: -5510.163, z: 10}
+    size: {x: 50.35559, y: 68.48926, z: 20}
+    approved: 1
+    manual: 1
