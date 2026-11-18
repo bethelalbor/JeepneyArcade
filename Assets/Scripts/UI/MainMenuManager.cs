@@ -34,7 +34,12 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("BGCMap");
+        SceneManager.LoadScene("Loading");
+    }
+
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
     }
 
   public void Customize()
