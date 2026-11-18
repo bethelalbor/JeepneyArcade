@@ -334,6 +334,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453829350}
+  - component: {fileID: 453829351}
   m_Layer: 0
   m_Name: LoadingManager
   m_TagString: Untagged
@@ -356,6 +357,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453829351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453829349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b542d7abd657e4e9ad2f0625d07b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LoadingScreen
+  progressFill: {fileID: 1573396877}
+  progressText: {fileID: 1946611362}
 --- !u!1 &502683894
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +458,7 @@ GameObject:
   - component: {fileID: 644655288}
   - component: {fileID: 644655287}
   m_Layer: 5
-  m_Name: Holder
+  m_Name: BarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,7 +533,7 @@ GameObject:
   - component: {fileID: 852173136}
   - component: {fileID: 852173135}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LoadingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,7 +762,7 @@ GameObject:
   - component: {fileID: 1573396878}
   - component: {fileID: 1573396877}
   m_Layer: 5
-  m_Name: Progress
+  m_Name: BarFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,11 +808,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: e9b4ec0ae2caf1044a42c039b179ccfe, type: 3}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -822,7 +837,7 @@ GameObject:
   - component: {fileID: 1946611363}
   - component: {fileID: 1946611362}
   m_Layer: 5
-  m_Name: Progress Text
+  m_Name: ProgressText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
