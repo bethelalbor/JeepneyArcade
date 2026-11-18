@@ -23,6 +23,10 @@ public class PassengerAI : MonoBehaviour
 
 
     private Animator animator;
+    private bool walkingToQueue;
+
+    [Tooltip("Cull off-screen idle animation after reaching the pickup queue. Movement and boarding keep animating.")]
+    public bool cullWaitingAnimation = true;
 
     private Collider passengerCollider;
 
@@ -39,8 +43,18 @@ public class PassengerAI : MonoBehaviour
 
 
 
+    public void WaitAtQueue()
+    {
+        if(hasTarget)
+            return;
+
+        walkingToQueue = true;
+        SetMovementAnimation(false);
+    }
+
     public void WalkTo(Vector3 position)
     {
+        walkingToQueue = false;
         followTransform = false;
 
         targetPosition = position;
@@ -54,6 +68,7 @@ public class PassengerAI : MonoBehaviour
 
     public void SetTarget(Vector3 position)
     {
+        walkingToQueue = true;
         followTransform = false;
 
         targetPosition = position;
@@ -69,6 +84,7 @@ public class PassengerAI : MonoBehaviour
 
     public void FollowTarget(Transform target)
     {
+        walkingToQueue = false;
         followTarget = target;
 
         followTransform = true;
@@ -170,6 +186,7 @@ public class PassengerAI : MonoBehaviour
 
     public void Sit()
     {
+        walkingToQueue = false;
         SetMovementAnimation(false);
 
         if(animator != null)
@@ -221,6 +238,12 @@ public class PassengerAI : MonoBehaviour
 
         if(animator != null)
         {
+            // Only queue-idle animation can stop off-screen. AI transforms and
+            // coroutine completion never depend on renderer visibility.
+            animator.cullingMode = cullWaitingAnimation && walkingToQueue && !moving && !animator.applyRootMotion
+                ? AnimatorCullingMode.CullCompletely
+                : AnimatorCullingMode.AlwaysAnimate;
+
             animator.SetBool(
                 "IsWalking",
                 moving && !isRunning
