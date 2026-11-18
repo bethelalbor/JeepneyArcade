@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PassengerPickup : MonoBehaviour
 {
@@ -15,23 +16,21 @@ public class PassengerPickup : MonoBehaviour
     private VehiclePassengerHandler vehicleHandler;
 
 
-    private bool playerInside = false;
+    private readonly HashSet<Collider> vehicleColliders = new HashSet<Collider>();
+    private PassengerManager reservationManager;
+    private Transform reservedSeat;
+    private PassengerAI boardingAI;
+    private bool boardingInProgress;
 
     private bool passengerPickedUp = false;
 
 
 
-    void Start()
-    {
-        passengerManager =
-            FindAnyObjectByType<PassengerManager>();
-    }
-
-
-
     void Update()
     {
-        if(playerInside && !passengerPickedUp)
+        vehicleColliders.RemoveWhere(c => c == null || !c.enabled || !c.gameObject.activeInHierarchy);
+
+        if(vehicleColliders.Count > 0 && !passengerPickedUp)
         {
             if(vehicleRb != null &&
                vehicleRb.linearVelocity.magnitude < 0.1f)
@@ -46,212 +45,210 @@ public class PassengerPickup : MonoBehaviour
 
     IEnumerator PickupPassenger()
     {
-        passengerPickedUp = true;
-
-
+        PassengerAI ai = passenger != null ? passenger.GetComponent<PassengerAI>() : null;
+        Transform doorTarget = vehicleHandler != null ? vehicleHandler.GetPassengerDoor() : null;
+        PassengerManager manager = passengerManager;
+        if(ai == null || !ai.isActiveAndEnabled || manager == null || doorTarget == null)
+            yield break;
 
         Transform availableSeat =
-            passengerManager.GetAvailableSeat();
+            manager.GetAvailableSeat();
 
 
 
-        if(availableSeat == null)
+        if(availableSeat == null || !manager.ReserveSeat(availableSeat))
         {
-            Debug.Log("No available seats");
-
-            passengerPickedUp = false;
-
             yield break;
         }
 
-
-
-        passengerManager.ReserveSeat(availableSeat);
-
-
-
-        yield return new WaitForSeconds(1f);
-
-
-
-        PassengerAI ai =
-            passenger.GetComponent<PassengerAI>();
-
-
-        if(ai == null)
+        passengerPickedUp = true;
+        boardingInProgress = true;
+        reservationManager = manager;
+        reservedSeat = availableSeat;
+        boardingAI = ai;
+        bool seated = false;
+        try
         {
-            Debug.LogError("PassengerAI missing");
-            yield break;
-        }
+            yield return new WaitForSeconds(1f);
+
+            if(vehicleColliders.Count == 0 || vehicleRb == null ||
+               vehicleRb.linearVelocity.magnitude >= 0.1f ||
+               ai == null || !ai.isActiveAndEnabled || manager == null || doorTarget == null)
+                yield break;
 
 
 
-        if(vehicleHandler == null)
-        {
-            Debug.LogError("VehiclePassengerHandler missing");
-            yield break;
-        }
+            float passengerTravelDistance = 0f;
 
-
-
-        float passengerTravelDistance = 0f;
-
-        Vector3 lastPassengerPosition =
-            passenger.transform.position;
-
-
-        Vector3 passengerPosition =
-            passenger.transform.position;
-
-
-        Vector3 doorPosition =
-            vehicleHandler.GetPassengerDoor().position;
-
-
-
-        Vector3 rightDirection =
-            passenger.transform.right;
-
-
-        rightDirection.y = 0f;
-
-        rightDirection.Normalize();
-
-
-
-        Vector3 doorOffset =
-            doorPosition - passengerPosition;
-
-
-        doorOffset.y = 0f;
-
-
-
-        Vector3 sideWaypoint =
-            passengerPosition +
-            rightDirection *
-            Vector3.Dot(
-                doorOffset,
-                rightDirection
-            );
-
-
-
-        ai.WalkTo(sideWaypoint);
-
-
-        while(!ai.HasReachedTarget())
-        {
-            yield return null;
-
-            passengerTravelDistance +=
-                Vector3.Distance(
-                    lastPassengerPosition,
-                    passenger.transform.position
-                );
-
-            lastPassengerPosition =
+            Vector3 lastPassengerPosition =
                 passenger.transform.position;
-        }
 
 
-
-        Transform doorTarget =
-            vehicleHandler.GetPassengerDoor();
-
-
-        ai.FollowTarget(doorTarget);
-
-
-        while(!ai.HasReachedTarget())
-        {
-            yield return null;
-
-            passengerTravelDistance +=
-                Vector3.Distance(
-                    lastPassengerPosition,
-                    passenger.transform.position
-                );
-
-            lastPassengerPosition =
+            Vector3 passengerPosition =
                 passenger.transform.position;
-        }
+
+
+            Vector3 doorPosition =
+                doorTarget.position;
 
 
 
-        ai.Sit();
+            Vector3 rightDirection =
+                passenger.transform.right;
+
+
+            rightDirection.y = 0f;
+
+            rightDirection.Normalize();
 
 
 
-        yield return new WaitForSeconds(0.5f);
+            Vector3 doorOffset =
+                doorPosition - passengerPosition;
+
+
+            doorOffset.y = 0f;
 
 
 
-        passengerManager.AddPassengerToSeat(
-            passenger,
-            availableSeat
-        );
-
-
-
-        // SCORE: successful pickup or perfect pickup
-        if(ScoreManager.Instance != null)
-        {
-            bool isPerfectPickup =
-                passengerTravelDistance < PerfectPickupDistance;
-
-
-            int pickupScore =
-                ScoreManager.Instance.GetPassengerPickupScore(
-                    isPerfectPickup
+            Vector3 sideWaypoint =
+                passengerPosition +
+                rightDirection *
+                Vector3.Dot(
+                    doorOffset,
+                    rightDirection
                 );
 
-            ScoreManager.Instance.AddScore(pickupScore);
 
 
-            string feedbackMessage =
-                "+" + pickupScore + " points";
+            ai.WalkTo(sideWaypoint);
 
 
-            if(isPerfectPickup)
+            while(!ai.HasReachedTarget())
             {
-                feedbackMessage = "Perfect Pickup!";
+                yield return null;
+
+                if(ai == null || !ai.isActiveAndEnabled || manager == null || doorTarget == null)
+                    yield break;
+
+                passengerTravelDistance +=
+                    Vector3.Distance(
+                        lastPassengerPosition,
+                        passenger.transform.position
+                    );
+
+                lastPassengerPosition =
+                    passenger.transform.position;
+            }
 
 
-                if(ScoreManager.Instance.PerfectPickupStreak > 1)
+
+            ai.FollowTarget(doorTarget);
+
+
+            while(!ai.HasReachedTarget())
+            {
+                yield return null;
+
+                if(ai == null || !ai.isActiveAndEnabled || manager == null || doorTarget == null)
+                    yield break;
+
+                passengerTravelDistance +=
+                    Vector3.Distance(
+                        lastPassengerPosition,
+                        passenger.transform.position
+                    );
+
+                lastPassengerPosition =
+                    passenger.transform.position;
+            }
+
+
+
+            ai.Sit();
+
+
+
+            yield return new WaitForSeconds(0.5f);
+
+
+
+            if(ai == null || !ai.isActiveAndEnabled || manager == null || doorTarget == null ||
+               !manager.AddPassengerToSeat(passenger, availableSeat))
+                yield break;
+
+            seated = true;
+            boardingInProgress = false;
+            reservedSeat = null;
+            reservationManager = null;
+            boardingAI = null;
+
+
+
+            // SCORE: successful pickup or perfect pickup
+            if(ScoreManager.Instance != null)
+            {
+                bool isPerfectPickup =
+                    passengerTravelDistance < PerfectPickupDistance;
+
+
+                int pickupScore =
+                    ScoreManager.Instance.GetPassengerPickupScore(
+                        isPerfectPickup
+                    );
+
+                ScoreManager.Instance.AddScore(pickupScore);
+
+
+                string feedbackMessage =
+                    "+" + pickupScore + " points";
+
+
+                if(isPerfectPickup)
                 {
+                    feedbackMessage = "Perfect Pickup!";
+
+
+                    if(ScoreManager.Instance.PerfectPickupStreak > 1)
+                    {
+                        feedbackMessage +=
+                            " X" +
+                            ScoreManager.Instance.PerfectPickupStreak;
+                    }
+
+
                     feedbackMessage +=
-                        " X" +
-                        ScoreManager.Instance.PerfectPickupStreak;
+                        "\n+" + pickupScore + " points";
                 }
 
 
-                feedbackMessage +=
-                    "\n+" + pickupScore + " points";
+                if(VehicleFeedbackText.Instance != null)
+                {
+                    VehicleFeedbackText.Instance.Show(feedbackMessage);
+                }
             }
 
 
-            if(VehicleFeedbackText.Instance != null)
+
+            // SCORE: full passenger capacity
+            if(manager.passengersOnBoard.Count ==
+               manager.seats.Count)
             {
-                VehicleFeedbackText.Instance.Show(feedbackMessage);
+                if(ScoreManager.Instance != null)
+                {
+                    ScoreManager.Instance.AddScore(100);
+                }
             }
+
+
+
+            Debug.Log("Passenger seated");
         }
-
-
-
-        // SCORE: full passenger capacity
-        if(passengerManager.passengersOnBoard.Count ==
-           passengerManager.seats.Count)
+        finally
         {
-            if(ScoreManager.Instance != null)
-            {
-                ScoreManager.Instance.AddScore(100);
-            }
+            if(!seated)
+                CancelBoarding();
         }
-
-
-
-        Debug.Log("Passenger seated");
     }
 
 
@@ -260,19 +257,30 @@ public class PassengerPickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Player"))
+        TrackVehicleCollider(other);
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        TrackVehicleCollider(other);
+    }
+
+    void TrackVehicleCollider(Collider other)
+    {
+        if(passengerPickedUp && !boardingInProgress)
             return;
 
+        Rigidbody candidate = other.attachedRigidbody;
+        if(candidate == null || !candidate.CompareTag("Player"))
+            return;
 
-        playerInside = true;
+        if((vehicleColliders.Count > 0 || boardingInProgress) && candidate != vehicleRb)
+            return;
 
-
-        vehicleRb =
-            other.GetComponent<Rigidbody>();
-
-
-        vehicleHandler =
-            other.GetComponent<VehiclePassengerHandler>();
+        vehicleRb = candidate;
+        vehicleHandler = candidate.GetComponent<VehiclePassengerHandler>();
+        passengerManager = candidate.GetComponent<PassengerManager>();
+        vehicleColliders.Add(other);
     }
 
 
@@ -281,11 +289,37 @@ public class PassengerPickup : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
-        {
-            playerInside = false;
+        vehicleColliders.Remove(other);
+    }
 
-            vehicleRb = null;
+    void OnDisable()
+    {
+        StopAllCoroutines();
+        CancelBoarding();
+        vehicleColliders.Clear();
+        vehicleRb = null;
+        vehicleHandler = null;
+        passengerManager = null;
+    }
+
+    void CancelBoarding()
+    {
+        if(reservationManager != null)
+            reservationManager.ReleaseSeat(reservedSeat);
+
+        if(boardingAI != null)
+        {
+            boardingAI.CancelMovement();
+            boardingAI.StandUp();
+            boardingAI.EnablePassengerCollision(true);
         }
+
+        if(boardingInProgress)
+            passengerPickedUp = false;
+
+        boardingInProgress = false;
+        reservationManager = null;
+        reservedSeat = null;
+        boardingAI = null;
     }
 }

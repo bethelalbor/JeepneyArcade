@@ -6,51 +6,65 @@ public class PassengerDropOff : MonoBehaviour
 {
     public DestinationPoint destination;
 
-    private Transform passengerDoorPoint;
+    private readonly HashSet<GameObject> passengersDroppingOff = new HashSet<GameObject>();
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Player"))
+        TryDropOff(other);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        TryDropOff(other);
+    }
+
+    private void TryDropOff(Collider other)
+    {
+        Rigidbody vehicle = other.attachedRigidbody;
+        if(vehicle == null || !vehicle.CompareTag("Player") || destination == null)
             return;
 
 
         VehiclePassengerHandler handler =
-            other.GetComponent<VehiclePassengerHandler>();
+            vehicle.GetComponent<VehiclePassengerHandler>();
 
 
-        if(handler != null)
-        {
-            passengerDoorPoint =
-                handler.GetPassengerDoor();
-        }
+        if(handler == null || handler.GetPassengerDoor() == null)
+            return;
 
 
         PassengerManager manager =
-            other.GetComponentInParent<PassengerManager>();
+            vehicle.GetComponent<PassengerManager>();
 
 
         if(manager != null)
         {
-            CheckPassengers(manager);
+            CheckPassengers(manager, handler.GetPassengerDoor());
         }
     }
 
 
 
-    void CheckPassengers(PassengerManager manager)
+    void CheckPassengers(PassengerManager manager, Transform passengerDoorPoint)
     {
+        if(manager.passengersOnBoard.Count == 0)
+            return;
+
         List<GameObject> passengersToDrop =
             new List<GameObject>();
 
 
         foreach(GameObject passenger in manager.passengersOnBoard)
         {
+            if(passenger == null || passengersDroppingOff.Contains(passenger))
+                continue;
+
             PassengerData data =
                 passenger.GetComponent<PassengerData>();
 
 
-            if(data != null && data.destination == destination)
+            if(data != null && data.isOnVehicle && data.destination == destination)
             {
                 passengersToDrop.Add(passenger);
             }
@@ -60,10 +74,14 @@ public class PassengerDropOff : MonoBehaviour
 
         foreach(GameObject passenger in passengersToDrop)
         {
+            if(!passengersDroppingOff.Add(passenger))
+                continue;
+
             StartCoroutine(
                 DropPassengerRoutine(
                     manager,
-                    passenger
+                    passenger,
+                    passengerDoorPoint
                 )
             );
         }
@@ -74,74 +92,85 @@ public class PassengerDropOff : MonoBehaviour
 
     IEnumerator DropPassengerRoutine(
         PassengerManager manager,
-        GameObject passenger
+        GameObject passenger,
+        Transform passengerDoorPoint
     )
     {
-        PassengerData data =
-            passenger.GetComponent<PassengerData>();
-
-
-        if(data != null)
+        try
         {
-            EconomyManager.Instance.AddMoney(
-                data.fareAmount
-            );
-        }
+            PassengerData data =
+                passenger.GetComponent<PassengerData>();
 
+            // Remove the passenger before rewarding delivery, so another collider or
+            // overlapping destination trigger cannot process the same fare again.
+            if(data == null || !data.isOnVehicle || data.destination != destination ||
+               !manager.passengersOnBoard.Contains(passenger))
+                yield break;
 
-        // SCORE: successful delivery
-        if(ScoreManager.Instance != null)
-        {
-            ScoreManager.Instance.AddScore(10);
+            manager.DropPassenger(passenger);
 
-
-            if(VehicleFeedbackText.Instance != null)
+            if(EconomyManager.Instance != null)
             {
-                VehicleFeedbackText.Instance.Show("+10 points");
+                EconomyManager.Instance.AddMoney(
+                    data.fareAmount
+                );
             }
-        }
 
 
-
-        manager.DropPassenger(passenger);
-
-
-
-        PassengerAI ai =
-            passenger.GetComponent<PassengerAI>();
-
-
-        if(passengerDoorPoint != null)
-        {
-            passenger.transform.position =
-                passengerDoorPoint.position;
-        }
-
-
-        if(ai != null)
-        {
-            ai.StandUp();
-        }
-
-
-        yield return new WaitForSeconds(0.3f);
-
-
-
-        if(ai != null && destination.walkPoint != null)
-        {
-            ai.WalkTo(
-                destination.walkPoint.position
-            );
-
-
-            while(!ai.HasReachedTarget())
+            // SCORE: successful delivery
+            if(ScoreManager.Instance != null)
             {
-                yield return null;
+                ScoreManager.Instance.AddScore(10);
+
+
+                if(VehicleFeedbackText.Instance != null)
+                {
+                    VehicleFeedbackText.Instance.Show("+10 points");
+                }
             }
+
+
+
+            PassengerAI ai =
+                passenger.GetComponent<PassengerAI>();
+
+
+            if(passengerDoorPoint != null)
+            {
+                passenger.transform.position =
+                    passengerDoorPoint.position;
+            }
+
+
+            if(ai != null)
+            {
+                ai.StandUp();
+            }
+
+
+            yield return new WaitForSeconds(0.3f);
+
+
+
+            if(ai != null && destination != null && destination.walkPoint != null)
+            {
+                ai.WalkTo(
+                    destination.walkPoint.position
+                );
+
+
+                while(ai != null && !ai.HasReachedTarget())
+                {
+                    yield return null;
+                }
+            }
+
+
+            Destroy(passenger);
         }
-
-
-        Destroy(passenger);
+        finally
+        {
+            passengersDroppingOff.Remove(passenger);
+        }
     }
 }

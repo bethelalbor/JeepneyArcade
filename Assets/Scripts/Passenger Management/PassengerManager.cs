@@ -62,6 +62,11 @@ public class PassengerManager : MonoBehaviour
         return true;
     }
 
+    public void ReleaseSeat(Transform seat)
+    {
+        reservedSeats.Remove(seat);
+    }
+
 
     public bool AddPassengerToSeat(
         GameObject passenger,
