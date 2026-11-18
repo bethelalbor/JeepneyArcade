@@ -37,6 +37,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("Loading");
     }
 
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
   public void Customize()
       {
           SceneManager.LoadScene("Customization");

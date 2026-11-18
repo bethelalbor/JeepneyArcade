@@ -15,5 +15,11 @@ public class PersistentBackgroundMusic : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        AudioSource musicSource = GetComponent<AudioSource>();
+        if (musicSource != null && PlayerPrefs.HasKey("Arangkada.MusicVolume"))
+        {
+            musicSource.volume = Mathf.Clamp01(PlayerPrefs.GetFloat("Arangkada.MusicVolume"));
+        }
     }
 }
