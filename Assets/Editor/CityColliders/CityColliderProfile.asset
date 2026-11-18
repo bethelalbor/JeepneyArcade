@@ -1,0 +1,1559 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7e09cd1fd402e4a811735c8438467c, type: 3}
+  m_Name: CityColliderProfile
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::JeepneyArcade.EditorTools.CityColliderProfile
+  entries:
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15845402257530191991-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Block_AN_Gutters_Modular.002
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0, y: 0, z: 0}
+    size: {x: 139.35413, y: 234.10693, z: 0.156429}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4916565896821854342-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Block_AN_Gutters_Modular.003
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0, y: 0.00024414062, z: 0}
+    size: {x: 34.150757, y: 158.71875, z: 0.156429}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10368943414628001335-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Block_AN_Pedestrian_Guide_19.001
+    note: 'Flat/degenerate mesh: manual review.'
+    shape: 0
+    center: {x: -8.9401245, y: -9.703857, z: 0}
+    size: {x: 5.2232666, y: 5.3032227, z: 0}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-895657900731595823-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Block_AN_SideWalk_Modular.002
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.000030517578, y: 0, z: 0}
+    size: {x: 141.83832, y: 235.63428, z: 0.19825312}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15007035679766287129-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Block_AN_SideWalk_Modular.003
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.000054359436, y: 0.00016021729, z: 0}
+    size: {x: 39.865982, y: 159.2635, z: 0.19825312}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17916256700433167831-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_1_Placed.008
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5750484, y: -0.25407696, z: 0.044049382}
+    size: {x: 3.0331306, y: 3.774941, z: 3.8525934}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11484027810441231518-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_1_Placed.085
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5750484, y: -0.25407696, z: 0.044049382}
+    size: {x: 3.0331306, y: 3.774941, z: 3.8525934}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4244135853160762921-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_1_Placed.086
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5750484, y: -0.25407696, z: 0.044049382}
+    size: {x: 3.0331306, y: 3.774941, z: 3.8525934}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3826832330219522350-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_1_Placed.087
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5750484, y: -0.25407696, z: 0.044049382}
+    size: {x: 3.0331306, y: 3.774941, z: 3.8525934}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13960112933026950302-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_1_Placed.088
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5750484, y: -0.25407696, z: 0.044049382}
+    size: {x: 3.0331306, y: 3.774941, z: 3.8525934}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4950572123952037172-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.095
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7639403158573445490-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.096
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7931999578772701903-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.097
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17705300129002188146-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.098
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3412301935238501462-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.209
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3937349057865302665-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.210
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3285255549511476134-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.211
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3095175497808752029-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.212
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5193339011335815551-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.213
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16548809407742089211-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_2_Placed.214
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.23128206, y: -0.24513316, z: 0.04475832}
+    size: {x: 3.6813703, y: 5.1275415, z: 6.013423}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-803684387122774361-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Circle_3_Placed.086
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 1.8253505, y: 0.7557214, z: -0.47080427}
+    size: {x: 6.5776935, y: 3.9484572, z: 2.357162}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14409160195676244152-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.089
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2202215207793977538-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.090
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17011071777469689944-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.091
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8116153476162914050-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.092
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3932192407614734770-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.208
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-18184482417401190508-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.209
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4638273184767040613-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Cube_Placed.210
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.0339144, y: 0.4940598, z: 0.26393116}
+    size: {x: 2.4554574, y: 1.3058391, z: 0.5278623}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15525540154974319968-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.006
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8996580811227286177-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.093
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3570926770636024216-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.209
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-969574863240244925-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.210
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3809731034007418151-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.211
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15764922812513086664-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_HalfCircle_1_Placed.212
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.03258419, y: 0.056996107, z: 0.07093778}
+    size: {x: 3.7155344, y: 2.3528442, z: 1.8814232}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-12077865911360116777-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.090
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4833406416987917726-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.091
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2373995500093378560-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.209
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6233260678959913126-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.210
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3031784640626979344-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.211
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15493444720458537545-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.212
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9699177981095162360-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Bush_Less_Placed.213
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.040658653, y: -0.021373957, z: 0.22312728}
+    size: {x: 2.2025385, y: 1.046818, z: 0.7258412}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11202812643515309233-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.009
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11687567949747057552-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.035
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3984687119137189743-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.038
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11811966944652248806-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.285
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10469203758782481462-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.286
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14415079851232786751-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.287
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15098269779172931902-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.288
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3498287126244648242-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.289
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2861056795498972693-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.290
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14102073185186014499-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.291
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8868085519580485983-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.292
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8067571551594096949-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.293
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2384145540198379796-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.294
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9043045820168880420-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.295
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15598272938928216010-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.296
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4471040672440549181-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.297
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15121529337992437726-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.298
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4765273303445359451-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.299
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7793549801084496085-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.300
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6780926162510299200-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.301
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6165416873567861219-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.302
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1220316533603507559-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.303
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2768175563565999582-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.304
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-12644897001608118554-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.577
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4073640273993167192-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.593
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-901315285131829819-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.606
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17564734903910809657-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1302
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8792226195565010023-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1303
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15409296561394997705-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1304
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13921623839083002060-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1305
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-372550208759858544-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1306
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11756903763147052021-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1307
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11364965678075534353-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1308
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6113909226014325606-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1309
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6243997450677066696-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1310
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1864898613899076358-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Holder_Gutter.1311
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.098413, y: 0.5311007, z: 0.05411987}
+    size: {x: 2.1967287, y: 1.0622014, z: 0.10823974}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17436372397483096545-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Pedestrian_Boundary_08.001
+    note: 'Flat/degenerate mesh: manual review.'
+    shape: 0
+    center: {x: -0.18817139, y: -0.04296875, z: 9.313226e-10}
+    size: {x: 20.967651, y: 5.1103516, z: 0.0000000018626451}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8858186878333566811-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Plane_Infill_29_01.002
+    note: 'Flat/degenerate mesh: manual review.'
+    shape: 0
+    center: {x: 32.35343, y: -38.025658, z: 0}
+    size: {x: 249.6674, y: 242.78242, z: 0}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10913373535073615468-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Road_Asphalt.001
+    note: 'Flat/degenerate mesh: manual review.'
+    shape: 0
+    center: {x: -23.13057, y: 5.824149, z: 0}
+    size: {x: 27.659897, y: 22.283823, z: 0}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5897649859550219066-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/STI.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1463.2405, y: -5586.703, z: 10}
+    size: {x: 62.700684, y: 40.88623, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11658556905211688134-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_1_Placed.002
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.93219584, y: 0.5387169, z: 3.8362186}
+    size: {x: 4.5851254, y: 2.586144, z: 7.6868224}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1062274468927947456-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_1_Placed.003
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.93219584, y: 0.5387169, z: 3.8362186}
+    size: {x: 4.5851254, y: 2.586144, z: 7.6868224}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1235643620474324476-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_2_Placed.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.5316206, y: 0.03704965, z: 3.9492893}
+    size: {x: 4.709894, y: 3.661831, z: 7.944726}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5032481301748938096-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_4_Placed.002
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.6509354, y: -1.1956685, z: 4.644037}
+    size: {x: 2.8591428, y: 6.158728, z: 9.312728}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9611407885543052469-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_5_Placed.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.5720755, y: -0.12877196, z: 4.861131}
+    size: {x: 6.5911303, y: 3.131474, z: 9.76541}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11493329039792256257-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_6_Placed.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.25417742, y: -0.28966388, z: 2.2882192}
+    size: {x: 2.1211934, y: 2.566853, z: 4.583462}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11294151259915498616-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_6_Placed.002
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.25417742, y: -0.28966388, z: 2.2882192}
+    size: {x: 2.1211934, y: 2.566853, z: 4.583462}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-869181926322535928-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_1_Placed.136
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.3381172, y: 0.265733, z: 4.9763536}
+    size: {x: 6.9964333, y: 4.33264, z: 9.9670925}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1676265600720987480-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_1_Placed.137
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.3381172, y: 0.265733, z: 4.9763536}
+    size: {x: 6.9964333, y: 4.33264, z: 9.9670925}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15978287338531395945-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_1_Placed.138
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.3381172, y: 0.265733, z: 4.9763536}
+    size: {x: 6.9964333, y: 4.33264, z: 9.9670925}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13247841426320932738-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_1_Placed.139
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.3381172, y: 0.265733, z: 4.9763536}
+    size: {x: 6.9964333, y: 4.33264, z: 9.9670925}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-75827191882240711-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_1_Placed.140
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1.3381172, y: 0.265733, z: 4.9763536}
+    size: {x: 6.9964333, y: 4.33264, z: 9.9670925}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8746842760450361130-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_2_Placed.131
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.75090635, y: 0.15289772, z: 5.3597403}
+    size: {x: 6.83078, y: 5.8472004, z: 10.734301}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7857725429285537197-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_2_Placed.133
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.75090635, y: 0.15289772, z: 5.3597403}
+    size: {x: 6.83078, y: 5.8472004, z: 10.734301}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-178209581623900093-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_2_Placed.134
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.75090635, y: 0.15289772, z: 5.3597403}
+    size: {x: 6.83078, y: 5.8472004, z: 10.734301}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17037836068924586624-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10298592900070893390-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.093
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14103694159052796814-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.137
+    note: Refitted. Review and approve before updating.
+    shape: 1
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 1
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2091821672440786697-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.138
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6701936941458189036-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.139
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4292260866571531980-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_3_Placed.140
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11110163, y: -0.12518382, z: 5.2321453}
+    size: {x: 8.388262, y: 9.901377, z: 10.546253}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-3040110661750981525-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.143
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9560002396214820112-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.144
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16354345850857775207-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.145
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10117448287162065157-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.146
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4226640813350029847-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.147
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5336813930573009385-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.148
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2549507276040547353-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.149
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10027239763677459602-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_4_Placed.150
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.904897, y: -1.6805788, z: 7.0315814}
+    size: {x: 6.0773187, y: 9.402115, z: 14.087817}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-18117096597826529372-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_5_Placed.137
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.3201728, y: -0.09281647, z: 6.300462}
+    size: {x: 9.356944, y: 5.5376234, z: 12.644072}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1702837982758527887-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_5_Placed.138
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.3201728, y: -0.09281647, z: 6.300462}
+    size: {x: 9.356944, y: 5.5376234, z: 12.644072}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-12133373393068547702-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_5_Placed.139
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.3201728, y: -0.09281647, z: 6.300462}
+    size: {x: 9.356944, y: 5.5376234, z: 12.644072}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-2443638607427560801-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_5_Placed.140
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.3201728, y: -0.09281647, z: 6.300462}
+    size: {x: 9.356944, y: 5.5376234, z: 12.644072}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14137478220745452331-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_6_Placed.105
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.13053238, y: -0.32051063, z: 3.187811}
+    size: {x: 4.1300154, y: 4.278008, z: 6.3826456}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-1757501468941086427-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_6_Placed.129
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.13053238, y: -0.32051063, z: 3.187811}
+    size: {x: 4.1300154, y: 4.278008, z: 6.3826456}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7679731142963937901-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_6_Placed.132
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.13053238, y: -0.32051063, z: 3.187811}
+    size: {x: 4.1300154, y: 4.278008, z: 6.3826456}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11241302683242764950-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_7_Placed.036
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.8497205, y: -0.057246566, z: 4.121431}
+    size: {x: 6.327244, y: 4.302393, z: 8.278855}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15736111109038178515-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_7_Placed.037
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.8497205, y: -0.057246566, z: 4.121431}
+    size: {x: 6.327244, y: 4.302393, z: 8.278855}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-617434024167574347-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_7_Placed.132
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.8497205, y: -0.057246566, z: 4.121431}
+    size: {x: 6.327244, y: 4.302393, z: 8.278855}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10854426567733311425-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_7_Placed.133
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: 0.8497205, y: -0.057246566, z: 4.121431}
+    size: {x: 1.45, y: 4.302393, z: 8.278855}
+    approved: 0
+    manual: 1
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7629123303813150067-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_8_Placed.092
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11613411, y: 0.055105448, z: 2.7483678}
+    size: {x: 2.9392958, y: 2.6158042, z: 5.5048513}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7433185197717010546-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_8_Placed.132
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11613411, y: 0.055105448, z: 2.7483678}
+    size: {x: 2.9392958, y: 2.6158042, z: 5.5048513}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17939252274544095258-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Tree_withLeaves_8_Placed.133
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -0.11613411, y: 0.055105448, z: 2.7483678}
+    size: {x: 2.9392958, y: 2.6158042, z: 5.5048513}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16324047103712091763-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0163.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-702174380891403630-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0165.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14367865562917259254-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0167.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-15128423862586930133-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0169.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-10773123200934656048-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0171.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5030403515767061756-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0173.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-468168307321579489-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0438.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8973192511976271908-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0452.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6161607167019518961-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0454.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9070052969173095710-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0456.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13394428929939251686-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0498.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-17620518197446595583-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0500.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-6932009741903438269-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0502.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-14584614444403304768-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0504.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11540899368744565760-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0506.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13142585487657610765-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0508.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-11208074157270474132-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0766.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-18165078070875187302-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0768.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16659499515595609762-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0770.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-8330588488151417042-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/BGC_StreetLight_0772.001
+    note: Pole shaft fitted; lamp arms excluded. Inspect preview.
+    shape: 1
+    center: {x: 0.0000042021275, y: 4.1192513, z: -0.019756958}
+    size: {x: 0.35554796, y: 8.238419, z: 0.41055134}
+    approved: 1
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-7310352104645679753-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.030
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1462.9055, y: -5510.163, z: 10}
+    size: {x: 50.35559, y: 68.48926, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9026325214990977985-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.047
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1490.4392, y: -5450.177, z: 10}
+    size: {x: 15.414551, y: 44.606934, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-18192033041238112369-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.049
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1520.6047, y: -5479.491, z: 10}
+    size: {x: 48.555786, y: 56.57617, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4499082644220527435-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.060
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1514.242, y: -5573.754, z: 10}
+    size: {x: 11.578125, y: 13.733887, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-12575729609843940561-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.069
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1426.7043, y: -5421.624, z: 10}
+    size: {x: 21.58728, y: 17.262695, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-5538020875743386912-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.070
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1392.8218, y: -5449.9307, z: 10}
+    size: {x: 42.968384, y: 29.9917, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-9627231241544536837-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.071
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1475.7979, y: -5548.549, z: 10}
+    size: {x: 28.518066, y: 8.60791, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-32775486739213996-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.072
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1474.4846, y: -5413.7305, z: 10}
+    size: {x: 52.992798, y: 21.637207, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16272342228241922622-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.073
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1490.505, y: -5572.971, z: 10}
+    size: {x: 28.905518, y: 18.751953, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-13345481779776864824-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.074
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1445.4294, y: -5447.2734, z: 10}
+    size: {x: 32.1604, y: 34.837402, z: 20}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-4273279569287340349-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.075
+    note: 'Flat/degenerate mesh: manual review.'
+    shape: 0
+    center: {x: -1527.1472, y: -5426.763, z: 0}
+    size: {x: 36.526245, y: 26.14746, z: 0}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16426017153259030914-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/Mid_Mesh.076
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1397.6938, y: -5420.862, z: 1.5}
+    size: {x: 4.8077393, y: 4.6220703, z: 3}
+    approved: 0
+    manual: 0
+  - sourceId: GlobalObjectId_V1-2-b5e10fcade4fb024d90cbd5da60ab5cb-16774047956188159690-1496621661
+    colliderId: 
+    path: CityMaster/Block_East_A/North_Mesh_B.001
+    note: 'Unusual/generic structure: review openings, overhangs and footprint before
+      approving.'
+    shape: 0
+    center: {x: -1534.5258, y: -5393.8535, z: 10}
+    size: {x: 38.38452, y: 27.731934, z: 20}
+    approved: 0
+    manual: 0

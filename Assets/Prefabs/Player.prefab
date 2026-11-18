@@ -320,6 +320,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1136278853369585895}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &5788534400213661691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6170850795066220791}
+  - component: {fileID: 5150751803716808303}
+  - component: {fileID: 8178827731085046704}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6170850795066220791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788534400213661691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964471941249576033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5150751803716808303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788534400213661691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.137818, y: 2.882001, z: 6.145361}
+  m_Center: {x: -0.06360614, y: 1.4426589, z: -0.24713695}
+--- !u!65 &8178827731085046704
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5788534400213661691}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.783184, y: 0.31649375, z: 0.6332369}
+  m_Center: {x: -0.021359563, y: 0.61230767, z: 2.9351149}
 --- !u!1 &6700961682056483173
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +501,6 @@ GameObject:
   - component: {fileID: 4410768284587314561}
   - component: {fileID: 3045324644575745250}
   - component: {fileID: 3280757528596203875}
-  - component: {fileID: 4435900660312401522}
   - component: {fileID: 3259244474251346753}
   - component: {fileID: 3190060584193735248}
   - component: {fileID: 1381744312842339314}
@@ -458,6 +532,7 @@ Transform:
   - {fileID: 5922488245758960810}
   - {fileID: 8655444288025119208}
   - {fileID: 6700961682056483174}
+  - {fileID: 6170850795066220791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4144674243752000838
@@ -559,31 +634,15 @@ MonoBehaviour:
   maxSpeed: 25
   acceleration: 5
   deceleration: 3
+  brakeDeceleration: 10
+  brakeToReverseSpeedThreshold: 0.25
   rotationSpeed: 150
+  grip: 6
+  highSpeedGripMultiplier: 3
+  minimumSteeringSpeed: 1.5
+  lowSpeedSteeringExponent: 1.5
   inputDeadzone: 0.15
-  steeringSensitivity: 3
-  maxSteerAngle: 30
---- !u!65 &4435900660312401522
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8108483270984563777}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.7, y: 2.9594612, z: 6.609063}
-  m_Center: {x: 0, y: 1.4727237, z: -0.03239298}
+  steeringBuildUpSpeed: 8
 --- !u!114 &3259244474251346753
 MonoBehaviour:
   m_ObjectHideFlags: 0
