@@ -14,12 +14,12 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_Fog: 1
+  m_FogColor: {r: 0.4960395, g: 0.6515403, b: 0.6698113, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogStart: 90
+  m_LinearFogEnd: 140
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -19517,6 +19517,8 @@ MonoBehaviour:
   - {fileID: 683998638}
   - {fileID: 1822432809}
   spawnInterval: 10
+  player: {fileID: 0}
+  spawnRange: 100
 --- !u!4 &229312530
 Transform:
   m_ObjectHideFlags: 0
@@ -31997,7 +31999,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 500
+  far clip plane: 200
   field of view: 60
   orthographic: 0
   orthographic size: 5
