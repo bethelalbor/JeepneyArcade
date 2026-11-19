@@ -25,6 +25,16 @@ public sealed class BGCMinimapController : MonoBehaviour
     [SerializeField] private RectTransform mapContent;
     [SerializeField] private RectTransform playerMarker;
 
+    [Header("Service Locations")]
+    [SerializeField] private Transform fuelStation;
+    [SerializeField] private Transform repairStation;
+    [SerializeField] private RectTransform fuelMarker;
+    [SerializeField] private RectTransform repairMarker;
+    [SerializeField] private RectTransform fuelEdgeMarker;
+    [SerializeField] private RectTransform repairEdgeMarker;
+    [SerializeField] private RectTransform markerLayer;
+    [SerializeField] private RectTransform edgeIndicators;
+
     [Header("Map Size")]
     [SerializeField, Min(1f)] private float displayedHeight = 400f;
 
@@ -39,6 +49,19 @@ public sealed class BGCMinimapController : MonoBehaviour
     private bool needsConfiguration = true;
     private bool ready;
     private bool warningIssued;
+
+    private struct StationCache
+    {
+        public Transform station;
+        public Vector3 worldPosition;
+        public Vector2 imageUV;
+        public bool calibrated;
+        public bool warned;
+    }
+
+    private StationCache fuelCache;
+    private StationCache repairCache;
+    private readonly Vector3[] markerCorners = new Vector3[4];
 
     private void OnEnable()
     {
@@ -55,6 +78,8 @@ public sealed class BGCMinimapController : MonoBehaviour
         if (needsConfiguration)
         {
             needsConfiguration = false;
+            fuelCache.calibrated = false;
+            repairCache.calibrated = false;
             ready = Configure();
         }
 
@@ -68,8 +93,7 @@ public sealed class BGCMinimapController : MonoBehaviour
             mapContent.sizeDelta = mapSize;
 
         Vector3 worldPosition = player.position;
-        Vector2 delta = new Vector2(worldPosition.x, worldPosition.z) - landmark1.worldXZ;
-        Vector2 uv = landmark1.imageUV + uvPerWorldX * delta.x + uvPerWorldZ * delta.y;
+        Vector2 uv = WorldToImageUV(worldPosition);
         Vector2 mapPoint = new Vector2((uv.x - 0.5f) * mapSize.x,
                                      (uv.y - 0.5f) * mapSize.y);
 
@@ -93,6 +117,135 @@ public sealed class BGCMinimapController : MonoBehaviour
             float angle = Mathf.Atan2(headingUI.y, headingUI.x) * Mathf.Rad2Deg - 90f;
             playerMarker.rotation = mapViewport.rotation * Quaternion.Euler(0f, 0f, angle);
         }
+
+        UpdateStation(fuelStation, fuelMarker, fuelEdgeMarker, ref fuelCache, "Fuel Station");
+        UpdateStation(repairStation, repairMarker, repairEdgeMarker, ref repairCache, "Repair Station");
+    }
+
+    private Vector2 WorldToImageUV(Vector3 worldPosition)
+    {
+        Vector2 delta = new Vector2(worldPosition.x, worldPosition.z) - landmark1.worldXZ;
+        return landmark1.imageUV + uvPerWorldX * delta.x + uvPerWorldZ * delta.y;
+    }
+
+    private void UpdateStation(Transform station, RectTransform marker, RectTransform edgeMarker,
+                               ref StationCache cache, string stationName)
+    {
+        if (station == null || marker == null || edgeMarker == null ||
+            markerLayer == null || edgeIndicators == null)
+        {
+            SetMarkerVisible(marker, false);
+            SetMarkerVisible(edgeMarker, false);
+            WarnStation(ref cache, stationName, "Assign its station Transform, both icons, Marker Layer, and Edge Indicators. Only this station is skipped.");
+            return;
+        }
+
+        if (marker.parent != markerLayer || markerLayer.parent != mapContent ||
+            edgeMarker.parent != edgeIndicators || edgeIndicators.IsChildOf(mapContent))
+        {
+            WarnStation(ref cache, stationName, "Place its normal icon under MarkerLayer under MapContent, and its edge icon under EdgeIndicators outside MapContent. Only this station is skipped.");
+            return;
+        }
+
+        Vector3 world = station.position;
+        // Station UVs are cached; replacing/moving a station or recalibrating invalidates them.
+        if (!cache.calibrated || cache.station != station || !cache.worldPosition.Equals(world))
+        {
+            cache.station = station;
+            cache.worldPosition = world;
+            cache.imageUV = WorldToImageUV(world);
+            cache.calibrated = true;
+        }
+        if (!IsFinite(cache.imageUV))
+        {
+            SetMarkerVisible(marker, false);
+            SetMarkerVisible(edgeMarker, false);
+            WarnStation(ref cache, stationName, "Its calibrated position is not finite. Only this station is skipped.");
+            return;
+        }
+
+        Rect mapRect = mapContent.rect;
+        Vector3 mapPoint = new Vector3(mapRect.xMin + cache.imageUV.x * mapRect.width,
+                                      mapRect.yMin + cache.imageUV.y * mapRect.height, 0f);
+        // Place the visual center, accounting for arbitrary icon pivots and layer transforms.
+        marker.rotation = mapViewport.rotation;
+        PositionMarkerCenter(marker, mapContent.TransformPoint(mapPoint));
+
+        Rect viewportRect = mapViewport.rect;
+        Vector2 center = viewportRect.center;
+        float radius = Mathf.Min(viewportRect.width, viewportRect.height) * 0.5f;
+        Vector2 location = mapViewport.InverseTransformPoint(marker.TransformPoint(marker.rect.center));
+        Vector2 direction = location - center;
+
+        // Require the whole icon to fit, so a normal marker never straddles the frame.
+        bool visible = radius > 0f;
+        marker.GetWorldCorners(markerCorners);
+        for (int i = 0; i < markerCorners.Length && visible; i++)
+        {
+            Vector2 corner = mapViewport.InverseTransformPoint(markerCorners[i]);
+            visible = (corner - center).sqrMagnitude <= radius * radius;
+        }
+        SetMarkerVisible(marker, visible);
+        if (visible)
+        {
+            SetMarkerVisible(edgeMarker, false);
+            return;
+        }
+
+        // Keep edge icons upright. Transform their corners into viewport space to account
+        // for scale, rotation, and pivots in either UI hierarchy without allocating arrays.
+        edgeMarker.rotation = mapViewport.rotation;
+        PositionMarkerCenter(edgeMarker, mapViewport.TransformPoint(new Vector3(center.x, center.y, 0f)));
+        edgeMarker.GetWorldCorners(markerCorners);
+        Vector2 heading = direction.normalized;
+        float distance = radius;
+        bool fits = radius > 0f && heading.sqrMagnitude > 0f;
+        for (int i = 0; i < markerCorners.Length && fits; i++)
+        {
+            Vector2 corner = mapViewport.InverseTransformPoint(markerCorners[i]);
+            Vector2 offset = corner - center;
+            if (offset.sqrMagnitude > radius * radius)
+            {
+                fits = false;
+                break;
+            }
+
+            // Largest distance along the station direction that keeps this corner inside.
+            float projection = Vector2.Dot(heading, offset);
+            float limit = -projection + Mathf.Sqrt(Mathf.Max(0f,
+                projection * projection + radius * radius - offset.sqrMagnitude));
+            distance = Mathf.Min(distance, limit);
+        }
+
+        if (!fits)
+        {
+            SetMarkerVisible(edgeMarker, false);
+            WarnStation(ref cache, stationName, "Its icons cannot fit inside the circular viewport. Reduce their UI size. Only this station's edge indicator is skipped.");
+            return;
+        }
+
+        Vector2 edgePoint = center + heading * Mathf.Max(0f, distance);
+        PositionMarkerCenter(edgeMarker, mapViewport.TransformPoint(new Vector3(edgePoint.x, edgePoint.y, 0f)));
+        SetMarkerVisible(edgeMarker, true);
+    }
+
+    private static void PositionMarkerCenter(RectTransform marker, Vector3 worldCenter)
+    {
+        marker.position = worldCenter - marker.TransformVector(marker.rect.center);
+    }
+
+    private static void SetMarkerVisible(RectTransform marker, bool visible)
+    {
+        if (marker != null && marker.gameObject.activeSelf != visible)
+            marker.gameObject.SetActive(visible);
+    }
+
+    private void WarnStation(ref StationCache cache, string stationName, string message)
+    {
+        if (cache.warned)
+            return;
+        Debug.LogWarning("BGCMinimapController — " + stationName + ": " + message, this);
+        cache.warned = true;
     }
 
     private bool Configure()
