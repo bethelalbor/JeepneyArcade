@@ -90,6 +90,18 @@ public class FuelSystem : MonoBehaviour
         playerMovement.DisableMovement();
     }
 
+    // A station can be exited or disabled before the tank is full.
+    public void CancelRefueling()
+    {
+        if (!isRefueling)
+            return;
+        isRefueling = false;
+        VehicleHealth health = GetComponent<VehicleHealth>();
+        if (playerMovement != null && currentFuel > 0f &&
+            (health == null || health.currentHealth > 0f))
+            playerMovement.EnableMovement();
+    }
+
 
 
     public bool RefuelOverTime()

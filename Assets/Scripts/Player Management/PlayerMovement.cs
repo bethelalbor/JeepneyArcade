@@ -45,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool movementLocked = false;
 
+    // Read-only startup status for the loading screen; driving behavior is unchanged.
+    public bool IsReadyForGameplay => isActiveAndEnabled && rb != null &&
+        !rb.isKinematic && !movementLocked && controls != null && controls.Vehicle.Move.enabled;
+    public int PhysicsUpdateCount { get; private set; }
+
 
 
     void Awake()
@@ -158,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
         // Keep forward drive responsive while allowing lateral momentum to carry
         // through a turn. Grip gradually brings that sideways motion back in line.
         Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
+        PhysicsUpdateCount++;
         localVelocity.z = currentSpeed;
         float speedPercent = maxSpeed > 0f
             ? Mathf.Clamp01(Mathf.Abs(localVelocity.z) / maxSpeed)

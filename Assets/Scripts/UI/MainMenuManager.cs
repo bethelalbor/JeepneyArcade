@@ -14,6 +14,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private bool resetSavedBalanceOnStart;
     [Tooltip("When enabled, replaces the saved high score with Initial Score each time MainMenu opens.")]
     [SerializeField] private bool resetSavedScoreOnStart;
+    private bool startingGame;
 
     void Start()
     {
@@ -34,6 +35,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        if (startingGame)
+            return;
+        startingGame = true;
+        Time.timeScale = 1f;
         PersistentBackgroundMusic.StopMusic();
         SceneManager.LoadScene("Loading");
     }

@@ -30,11 +30,14 @@ public class GameOverManager : MonoBehaviour
     private bool hasGameOverEarnings;
     private int gameOverScore;
     private bool hasGameOverScore;
+    private bool leavingRun;
 
 
 
     public void ShowFuelGameOver()
     {
+        if (leavingRun)
+            return;
         vehicleIsWrecked = false;
 
         statusText.text = "OUT OF FUEL";
@@ -50,6 +53,8 @@ public class GameOverManager : MonoBehaviour
 
     public void ShowWrecked()
     {
+        if (leavingRun)
+            return;
         vehicleIsWrecked = true;
 
         statusText.text = "WRECKED";
@@ -65,6 +70,8 @@ public class GameOverManager : MonoBehaviour
 
     public void EmergencyRefuel()
     {
+        if (leavingRun)
+            return;
         if(economyManager.TrySpendMoney(emergencyFuelCost))
         {
             Time.timeScale = 1f;
@@ -94,6 +101,8 @@ public class GameOverManager : MonoBehaviour
 
     public void EmergencyRepair()
     {
+        if (leavingRun)
+            return;
         if(economyManager.TrySpendMoney(emergencyRepairCost))
         {
             Time.timeScale = 1f;
@@ -135,6 +144,10 @@ public class GameOverManager : MonoBehaviour
 
     public void ExitGame()
     {
+        if (leavingRun)
+            return;
+        leavingRun = true;
+
         if(hasGameOverEarnings)
         {
             SavedBalance.Add(gameOverEarnings);
