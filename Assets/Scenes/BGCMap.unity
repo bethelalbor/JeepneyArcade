@@ -11702,6 +11702,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GasStation
       objectReference: {fileID: 0}
+    - target: {fileID: 3834931927444479393, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
+      propertyPath: m_text
+      value: Refuel - PHP 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3834931927444479393, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     - target: {fileID: 3999008402642820776, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.037057247
@@ -11725,6 +11733,10 @@ PrefabInstance:
     - target: {fileID: 5084939521257248867, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
       propertyPath: m_LocalScale.z
       value: 6.900601
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156593474129523900, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5224247907847798841, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11768,7 +11780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5438405879340666645, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
       propertyPath: refuelCost
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6344522324678316236, guid: 2889328f6040dab43b6e0b2b32537aed, type: 3}
       propertyPath: m_LocalPosition.x
@@ -228031,6 +228043,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2007827360}
     m_Modifications:
+    - target: {fileID: 115776786193442411, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 380168046094031866, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.455902
@@ -228059,13 +228075,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: RepairStation
       objectReference: {fileID: 0}
+    - target: {fileID: 3145898048486368258, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
+      propertyPath: m_text
+      value: Repair - PHP 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3145898048486368258, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     - target: {fileID: 3231415423087677892, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4401809932652969429, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: repairCost
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4777065904298357987, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: m_LocalRotation.w

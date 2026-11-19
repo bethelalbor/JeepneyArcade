@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>Presentation only; service colliders and station buildings never pulse.</summary>
 [DisallowMultipleComponent]
@@ -15,6 +16,17 @@ public sealed class StationZoneVisual : MonoBehaviour
     [SerializeField] private FuelSystem playerFuel;
     [SerializeField] private VehicleHealth playerHealth;
     [SerializeField] private Camera playerCamera;
+    [Tooltip("Show this station's zone, icon, and cost only below this fuel/health value.")]
+    [SerializeField, Min(0f)] private float visibilityThreshold = 80f;
+    [Header("Cost Label")]
+    [SerializeField] private TMP_Text costLabel;
+    [Tooltip("Leave empty to use Refuel or Repair. The price always comes from the station component.")]
+    [SerializeField] private string costLabelPrefix = "";
+    [SerializeField, Min(1f)] private float costFontSize = 22f;
+    [SerializeField] private Color costTextColor = Color.white;
+    [Tooltip("Position relative to the icon, in its local UI units.")]
+    [SerializeField] private Vector2 costLabelOffset = new Vector2(0f, -75f);
+    [Header("Pulse")]
     [SerializeField, Min(0f)] private float pulseSpeed = 1f;
     [SerializeField, Min(0f)] private float minimumPulseScale = 0.9f;
     [SerializeField, Min(0f)] private float maximumPulseScale = 1.1f;
@@ -29,11 +41,23 @@ public sealed class StationZoneVisual : MonoBehaviour
     private Vector3 outlineScale;
     private Vector3 iconScale;
     private float nextReferenceLookup;
+    private RefuelStation refuelStation;
+    private RepairStation repairStation;
+    private int displayedCost;
+    private string displayedPrefix;
+    private bool hasDisplayedCost;
     private static readonly int BaseColor = Shader.PropertyToID("_BaseColor");
     private static readonly int ColorProperty = Shader.PropertyToID("_Color");
 
     private void Awake()
     {
+        if (serviceZone != null)
+        {
+            refuelStation = serviceZone.GetComponent<RefuelStation>();
+            repairStation = serviceZone.GetComponent<RepairStation>();
+        }
+        if (costLabel != null)
+            costLabel.raycastTarget = false;
         markerProperties = new MaterialPropertyBlock();
         outlineProperties = new MaterialPropertyBlock();
         if (zoneMarker != null)
@@ -59,8 +83,8 @@ public sealed class StationZoneVisual : MonoBehaviour
     {
         ResolveReferences();
         bool needed = service == ServiceType.Fuel
-            ? playerFuel != null && playerFuel.currentFuel < playerFuel.maxFuel
-            : playerHealth != null && playerHealth.currentHealth < playerHealth.maxHealth;
+            ? playerFuel != null && playerFuel.currentFuel < visibilityThreshold
+            : playerHealth != null && playerHealth.currentHealth < visibilityThreshold;
         bool visible = needed && serviceZone != null && serviceZone.enabled && serviceZone.gameObject.activeInHierarchy;
         SetVisible(visible);
         if (!visible || markerVisuals == null)
@@ -97,6 +121,37 @@ public sealed class StationZoneVisual : MonoBehaviour
             color.a *= pulse;
             floatingIcon.color = color;
         }
+        UpdateCostLabel(pulse);
+    }
+
+    private void UpdateCostLabel(float pulse)
+    {
+        if (costLabel == null)
+            return;
+        bool hasStation = service == ServiceType.Fuel ? refuelStation != null : repairStation != null;
+        costLabel.enabled = hasStation;
+        if (!hasStation)
+            return;
+
+        int cost = service == ServiceType.Fuel ? refuelStation.refuelCost : repairStation.repairCost;
+        string prefix = string.IsNullOrEmpty(costLabelPrefix)
+            ? (service == ServiceType.Fuel ? "Refuel" : "Repair") : costLabelPrefix;
+        if (!hasDisplayedCost || displayedCost != cost || displayedPrefix != prefix)
+        {
+            // Existing fonts may not include the peso glyph; never show a missing box.
+            string currency = costLabel.font != null && costLabel.font.HasCharacter('\u20b1') ? "\u20b1" : "PHP ";
+            costLabel.text = prefix + " - " + currency + cost;
+            displayedCost = cost;
+            displayedPrefix = prefix;
+            hasDisplayedCost = true;
+        }
+        // The label is a child of the icon's world-space Canvas, sharing its billboard
+        // rotation and pulse scale; TMP color has its own synchronized alpha.
+        costLabel.rectTransform.anchoredPosition = costLabelOffset;
+        costLabel.fontSize = costFontSize;
+        Color color = costTextColor;
+        color.a *= pulse;
+        costLabel.color = color;
     }
 
     private void ResolveReferences()
