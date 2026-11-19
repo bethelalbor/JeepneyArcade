@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -27,6 +28,23 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Settings")]
     public float inputDeadzone = 0.15f;
     public float steeringBuildUpSpeed = 8f;
+
+    [Header("Crash Response")]
+    [Tooltip("Visual model only; keep Rigidbody and colliders outside this hierarchy.")]
+    [SerializeField] private Transform crashVisual;
+    [SerializeField, Range(0f, 8f)] private float maximumCrashTilt = 4f;
+    [SerializeField, Min(0.1f)] private float crashSettleDuration = 0.5f;
+    [SerializeField, Min(0f)] private float minimumCrashSpeed = 1.5f;
+    [SerializeField, Min(0.1f)] private float fullCrashSpeed = 10f;
+
+    private readonly List<Vector3> obstacleNormals = new List<Vector3>(8);
+    private Vector3 visualRestPosition;
+    private Quaternion visualRestRotation;
+    private Vector3 crashPivot;
+    private Vector3 crashAxis;
+    private float crashAngle;
+    private float crashStartedAt = float.NegativeInfinity;
+    private bool visualReady;
 
 
     private float currentSpeed = 0f;
@@ -74,9 +92,18 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        rb.constraints |=
-            RigidbodyConstraints.FreezeRotationX |
-            RigidbodyConstraints.FreezeRotationZ;
+        // Physics cannot turn the vehicle; heading changes come from steering only.
+        rb.constraints |= RigidbodyConstraints.FreezeRotation;
+        rb.angularVelocity = Vector3.zero;
+
+        if (crashVisual != null && crashVisual.parent == transform &&
+            crashVisual.GetComponentInChildren<Collider>(true) == null &&
+            crashVisual.GetComponentInChildren<Rigidbody>(true) == null)
+        {
+            visualRestPosition = crashVisual.localPosition;
+            visualRestRotation = crashVisual.localRotation;
+            visualReady = true;
+        }
     }
 
 
@@ -157,13 +184,26 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate() //eto nagapply ng physics sa vehicle movement
     {
         if(movementLocked)
+        {
+            obstacleNormals.Clear();
             return;
+        }
 
 
         // Keep forward drive responsive while allowing lateral momentum to carry
         // through a turn. Grip gradually brings that sideways motion back in line.
         Vector3 localVelocity = transform.InverseTransformDirection(rb.linearVelocity);
+        float actualForwardSpeed = localVelocity.z;
         PhysicsUpdateCount++;
+        // Do not continually restore motor speed into a surface that stopped us.
+        foreach (Vector3 normal in obstacleNormals)
+        {
+            if (Vector3.Dot(transform.forward * currentSpeed, normal) < -0.001f)
+            {
+                currentSpeed = 0f;
+                break;
+            }
+        }
         localVelocity.z = currentSpeed;
         float speedPercent = maxSpeed > 0f
             ? Mathf.Clamp01(Mathf.Abs(localVelocity.z) / maxSpeed)
@@ -180,6 +220,18 @@ public class PlayerMovement : MonoBehaviour
         );
 
         Vector3 drivenVelocity = transform.TransformDirection(localVelocity); //moving without changing vertical velocity or magtip over
+        // Remove inward lateral motion as well, including contacts at corners.
+        for (int pass = 0; pass < 2; pass++)
+        {
+            foreach (Vector3 normal in obstacleNormals)
+            {
+                float inwardSpeed = Vector3.Dot(drivenVelocity, normal);
+                if (inwardSpeed < 0f)
+                    drivenVelocity -= normal * inwardSpeed;
+            }
+        }
+        // Collision callbacks repopulate this after each simulation step.
+        obstacleNormals.Clear();
         rb.linearVelocity = new Vector3(
             drivenVelocity.x,
             rb.linearVelocity.y,
@@ -187,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
         );
 
 
-        float speedMagnitude = Mathf.Abs(currentSpeed);
+        float speedMagnitude = Mathf.Min(Mathf.Abs(currentSpeed), Mathf.Abs(actualForwardSpeed));
         if(speedMagnitude <= minimumSteeringSpeed)
         {
             activeSteering = 0f;
@@ -240,6 +292,82 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
+    //eto yung tilt ng vehicle kapag nag crash 
+    private void OnCollisionEnter(Collision collision)
+    {
+        RecordObstacleContacts(collision, true);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        RecordObstacleContacts(collision, false);
+    }
+
+    private void RecordObstacleContacts(Collision collision, bool newImpact)
+    {
+        float strongestImpact = 0f;
+        ContactPoint strongestContact = default;
+        for (int i = 0; i < collision.contactCount; i++)
+        {
+            ContactPoint contact = collision.GetContact(i);
+            // Roads and driveable slopes must not act like walls or trigger rocking.
+            if (Mathf.Abs(contact.normal.y) > 0.5f)
+                continue;
+
+            Vector3 normal = Vector3.ProjectOnPlane(contact.normal, Vector3.up).normalized;
+            obstacleNormals.Add(normal);
+            // Use the normal component's magnitude; Unity's callback pair ordering
+            // can reverse the relative-velocity direction. Tangential scrapes stay small.
+            float impactSpeed = Mathf.Abs(Vector3.Dot(collision.relativeVelocity, normal));
+            if (impactSpeed > strongestImpact)
+            {
+                strongestImpact = impactSpeed;
+                strongestContact = contact;
+            }
+        }
+
+        if (!newImpact || movementLocked || !visualReady || strongestImpact < minimumCrashSpeed ||
+            Time.time < crashStartedAt + crashSettleDuration)
+            return;
+
+        // Pivot on the contact side at the body's bottom so the opposite side rises.
+        Bounds bodyBounds = strongestContact.thisCollider.bounds;
+        Vector3 pivotWorld = bodyBounds.ClosestPoint(strongestContact.point);
+        pivotWorld.y = bodyBounds.min.y;
+        crashPivot = transform.InverseTransformPoint(pivotWorld);
+        Vector3 contactDirection = transform.InverseTransformDirection(
+            Vector3.ProjectOnPlane(strongestContact.point - bodyBounds.center, Vector3.up));
+        if (contactDirection.sqrMagnitude < 0.001f)
+            contactDirection = transform.InverseTransformDirection(-strongestContact.normal);
+        contactDirection.y = 0f;
+        crashAxis = Vector3.Cross(Vector3.up, contactDirection.normalized);
+        crashAngle = maximumCrashTilt * Mathf.Clamp01(strongestImpact / Mathf.Max(fullCrashSpeed, 0.1f));
+        crashStartedAt = Time.time;
+    }
+
+    private void LateUpdate()
+    {
+        if (!visualReady)
+            return;
+
+        float progress = Mathf.Clamp01((Time.time - crashStartedAt) / Mathf.Max(crashSettleDuration, 0.1f));
+        // Quick lift, then a soft return with zero velocity at either end.
+        float envelope = progress < 0.2f
+            ? Mathf.SmoothStep(0f, 1f, progress / 0.2f)
+            : 1f - Mathf.SmoothStep(0f, 1f, (progress - 0.2f) / 0.8f);
+        Quaternion tilt = Quaternion.AngleAxis(crashAngle * envelope, crashAxis);
+        crashVisual.localRotation = tilt * visualRestRotation;
+        crashVisual.localPosition = crashPivot + tilt * (visualRestPosition - crashPivot);
+    }
+
+    private void ResetCrashVisual()
+    {
+        crashStartedAt = float.NegativeInfinity;
+        if (!visualReady)
+            return;
+        crashVisual.localPosition = visualRestPosition;
+        crashVisual.localRotation = visualRestRotation;
+    }
 
 
     public void DisableMovement()
@@ -257,6 +385,8 @@ public class PlayerMovement : MonoBehaviour
     public void EnableMovement()
     {
         movementLocked = false;
+        obstacleNormals.Clear();
+        ResetCrashVisual();
 
 
         currentSpeed = 0f;
@@ -339,6 +469,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnDisable()
     {
+        obstacleNormals.Clear();
+        ResetCrashVisual();
         controls.Disable();
         mobileSteerLeft = false;
         mobileSteerRight = false;

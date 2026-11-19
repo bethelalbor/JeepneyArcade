@@ -643,6 +643,11 @@ MonoBehaviour:
   lowSpeedSteeringExponent: 1.5
   inputDeadzone: 0.15
   steeringBuildUpSpeed: 8
+  crashVisual: {fileID: 5280743173392171062}
+  maximumCrashTilt: 4
+  crashSettleDuration: 0.5
+  minimumCrashSpeed: 1.5
+  fullCrashSpeed: 10
 --- !u!114 &3259244474251346753
 MonoBehaviour:
   m_ObjectHideFlags: 0

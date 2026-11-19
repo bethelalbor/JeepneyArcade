@@ -76,6 +76,7 @@ MonoBehaviour:
   destination: {fileID: 0}
   fareAmount: 10
   isOnVehicle: 0
+  initialPickupQueue: {fileID: 0}
 --- !u!95 &7259832228972960004
 Animator:
   serializedVersion: 7
@@ -87,7 +88,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7a013585817926f4091b9e606f46569b, type: 3}
   m_Controller: {fileID: 9100000, guid: f6245900e83f9ec4295db3c7696132be, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -111,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PassengerAI
   walkSpeed: 2
+  runSpeed: 4
+  runChance: 0.35
+  cullWaitingAnimation: 1
 --- !u!114 &4775663268161676294
 MonoBehaviour:
   m_ObjectHideFlags: 0
