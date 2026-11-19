@@ -10,9 +10,33 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private TMP_Text musicVolumePercentage;
     [SerializeField] private GameObject helpPanel;
+    [Tooltip("Top-to-bottom controller navigation order. Left/right remain available for slider adjustment.")]
+    [SerializeField] private Selectable[] navigationControls;
 
     private AudioSource musicSource;
     private bool missingMusicWarningReported;
+
+    private void Start()
+    {
+        if (navigationControls == null)
+            return;
+
+        // OnEnable has already resolved whether the music slider is available.
+        // Skip unavailable controls so opening Settings directly cannot trap focus.
+        var available = new System.Collections.Generic.List<Selectable>();
+        foreach (Selectable control in navigationControls)
+        {
+            if (control != null && control.isActiveAndEnabled && control.IsInteractable())
+                available.Add(control);
+        }
+        for (int i = 0; i < available.Count; i++)
+        {
+            Navigation navigation = new Navigation { mode = Navigation.Mode.Explicit };
+            navigation.selectOnUp = available[(i + available.Count - 1) % available.Count];
+            navigation.selectOnDown = available[(i + 1) % available.Count];
+            available[i].navigation = navigation;
+        }
+    }
 
     private void OnEnable()
     {
