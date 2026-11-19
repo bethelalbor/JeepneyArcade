@@ -10,6 +10,7 @@ public class LoadingScreen : MonoBehaviour
 {
     [SerializeField] private Image progressFill;
     [SerializeField] private TMP_Text progressText;
+    [SerializeField] private Camera loadingCamera;
     [SerializeField, Min(1f)] private float readinessTimeout = 10f;
     private string initializationError;
 
@@ -38,11 +39,12 @@ public class LoadingScreen : MonoBehaviour
         loadingCanvas.sortingOrder = short.MaxValue;
 
         // The Loading scene stays present as an opaque cover while BGCMap initializes.
-        // Remove competing cameras, listeners, lights and input systems from Loading only.
+        // Keep a background camera rendering Display 1 until this scene unloads.
+        // Remove other cameras, listeners, lights and input systems from Loading only.
         foreach (GameObject root in loadingScene.GetRootGameObjects())
         {
             foreach (Camera camera in root.GetComponentsInChildren<Camera>(true))
-                camera.enabled = false;
+                camera.enabled = camera == loadingCamera;
             foreach (AudioListener listener in root.GetComponentsInChildren<AudioListener>(true))
                 listener.enabled = false;
             foreach (Light light in root.GetComponentsInChildren<Light>(true))
