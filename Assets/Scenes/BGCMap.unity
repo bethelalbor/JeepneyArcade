@@ -232006,11 +232006,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 380168046094031866, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.455902
+      value: -7.38
       objectReference: {fileID: 0}
     - target: {fileID: 380168046094031866, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.305893
+      value: 3.56
       objectReference: {fileID: 0}
     - target: {fileID: 515052689487908318, guid: bc2ba236f96f0974e8e7ce69a9954c1e, type: 3}
       propertyPath: iconHeight
