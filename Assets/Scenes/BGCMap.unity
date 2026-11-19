@@ -22092,6 +22092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209628290}
+  - component: {fileID: 209628291}
   m_Layer: 0
   m_Name: MiniMapContainer
   m_TagString: Untagged
@@ -22111,17 +22112,43 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 817226712}
   - {fileID: 1107478497}
   - {fileID: 1759367771}
   - {fileID: 1778625830}
-  - {fileID: 817226712}
   m_Father: {fileID: 226741166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -119.4, y: 205.7}
+  m_AnchoredPosition: {x: -119.4, y: 161.5}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &209628291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209628289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b843ad43239138478677f294c76e1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BGCMinimapController
+  player: {fileID: 753148638}
+  mapViewport: {fileID: 1107478497}
+  mapContent: {fileID: 1572224219}
+  playerMarker: {fileID: 1759367771}
+  displayedHeight: 400
+  landmark1:
+    worldXZ: {x: 0, y: 0}
+    imageUV: {x: 0, y: 0}
+  landmark2:
+    worldXZ: {x: 0, y: 0}
+    imageUV: {x: 0, y: 0}
+  landmark3:
+    worldXZ: {x: 0, y: 0}
+    imageUV: {x: 0, y: 0}
 --- !u!1 &209834012
 GameObject:
   m_ObjectHideFlags: 0
@@ -87401,7 +87428,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &817226713
 MonoBehaviour:
@@ -113703,6 +113730,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107478497}
+  - component: {fileID: 1107478500}
+  - component: {fileID: 1107478499}
   - component: {fileID: 1107478498}
   m_Layer: 0
   m_Name: MapViewport
@@ -113729,7 +113758,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1107478498
 MonoBehaviour:
@@ -113740,11 +113769,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 1107478496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: 0, y: 0, z: 0, w: 0}
-  m_Softness: {x: 0, y: 0}
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1107478499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107478496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
+  m_ShowMaskGraphic: 0
+--- !u!222 &1107478500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107478496}
+  m_CullTransparentMesh: 1
 --- !u!1 &1108077843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3996061734005918829, guid: 2b5587d1746a43b4aa606c78e33cad41, type: 3}
@@ -170481,7 +170547,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 100}
+  m_SizeDelta: {x: 640, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572224220
 MonoBehaviour:
