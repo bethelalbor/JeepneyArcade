@@ -34,6 +34,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
+        PersistentBackgroundMusic.StopMusic();
         SceneManager.LoadScene("Loading");
     }
 

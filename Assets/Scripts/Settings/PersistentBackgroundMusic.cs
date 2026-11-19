@@ -5,6 +5,22 @@ public class PersistentBackgroundMusic : MonoBehaviour
 {
     private static PersistentBackgroundMusic instance;
 
+    public static void StopMusic()
+    {
+        if (instance == null)
+            return;
+
+        PersistentBackgroundMusic music = instance;
+        // Release ownership before the next scene creates its music instance.
+        instance = null;
+
+        AudioSource musicSource = music.GetComponent<AudioSource>();
+        if (musicSource != null)
+            musicSource.Stop();
+
+        Destroy(music.gameObject);
+    }
+
     private void Awake()
     {
         if (instance != null && instance != this)

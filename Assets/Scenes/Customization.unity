@@ -635,20 +635,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &910000007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910000001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e3f5a7c9b1d4f60ab8e2d6c5f314978, type: 3}
-  m_Name:
-  m_EditorClassIdentifier: Assembly-CSharp::UIFocusAndCancel
-  initialSelection: {fileID: 910000022}
-  cancelButton: {fileID: 910000052}
 --- !u!224 &910000002
 RectTransform:
   m_ObjectHideFlags: 0
@@ -762,6 +748,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &910000007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910000001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e3f5a7c9b1d4f60ab8e2d6c5f314978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIFocusAndCancel
+  initialSelection: {fileID: 910000022}
+  cancelButton: {fileID: 910000052}
 --- !u!1 &910000010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,7 +1144,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 110, y: -50}
-  m_SizeDelta: {x: 115, y: 42}
+  m_SizeDelta: {x: 115, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910000052
 MonoBehaviour:
@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 2.5
+  m_PixelsPerUnitMultiplier: 1.3
 --- !u!222 &910000054
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1536,10 +1536,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e7e9be9312348924e9148c3ee2594363, type: 3}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
