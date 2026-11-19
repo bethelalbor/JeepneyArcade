@@ -22141,14 +22141,14 @@ MonoBehaviour:
   playerMarker: {fileID: 1759367771}
   displayedHeight: 400
   landmark1:
-    worldXZ: {x: 0, y: 0}
-    imageUV: {x: 0, y: 0}
+    worldXZ: {x: 1425.5072, y: -150.81104}
+    imageUV: {x: 0.28200606, y: 0.45967743}
   landmark2:
-    worldXZ: {x: 0, y: 0}
-    imageUV: {x: 0, y: 0}
+    worldXZ: {x: 285.3335, y: 230.90088}
+    imageUV: {x: 0.61466736, y: 0.2782258}
   landmark3:
-    worldXZ: {x: 0, y: 0}
-    imageUV: {x: 0, y: 0}
+    worldXZ: {x: 357.3495, y: -416.68994}
+    imageUV: {x: 0.5970262, y: 0.5927419}
 --- !u!1 &209834012
 GameObject:
   m_ObjectHideFlags: 0
