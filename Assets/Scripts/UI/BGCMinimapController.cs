@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,11 @@ public sealed class BGCMinimapController : MonoBehaviour
     [SerializeField] private RectTransform markerLayer;
     [SerializeField] private RectTransform edgeIndicators;
 
+    [Header("Seated Passenger Destinations")]
+    [SerializeField] private PassengerManager passengerManager;
+    [SerializeField] private Sprite destinationDotSprite;
+    [SerializeField] private Vector2 destinationMarkerSize = new Vector2(18f, 18f);
+
     [Header("Map Size")]
     [SerializeField, Min(1f)] private float displayedHeight = 400f;
 
@@ -63,30 +69,74 @@ public sealed class BGCMinimapController : MonoBehaviour
     private StationCache repairCache;
     private readonly Vector3[] markerCorners = new Vector3[4];
 
+    // Presentation pool only. PassengerManager remains the source of passenger state.
+    private sealed class DestinationMarker
+    {
+        public DestinationPoint destination;
+        public Image mapImage;
+        public Image edgeImage;
+        public StationCache cache;
+    }
+
+    private readonly List<DestinationMarker> destinationMarkers = new List<DestinationMarker>();
+    private readonly HashSet<DestinationPoint> seatedDestinations = new HashSet<DestinationPoint>();
+    private PassengerManager subscribedPassengerManager;
+    private bool destinationsDirty = true;
+    private bool destinationWarningIssued;
+
     private void OnEnable()
     {
         needsConfiguration = true;
+        destinationsDirty = true;
     }
 
     private void OnValidate()
     {
         needsConfiguration = true;
+        destinationsDirty = true;
+    }
+
+    private void OnDisable()
+    {
+        if (subscribedPassengerManager != null)
+            subscribedPassengerManager.PassengersOnBoardChanged -= MarkDestinationsDirty;
+        subscribedPassengerManager = null;
+        HideDestinationMarkers();
+    }
+
+    private void OnDestroy()
+    {
+        // Destroy only the runtime UI objects owned by this controller.
+        for (int i = 0; i < destinationMarkers.Count; i++)
+        {
+            DestinationMarker marker = destinationMarkers[i];
+            if (marker.mapImage != null)
+                Destroy(marker.mapImage.gameObject);
+            if (marker.edgeImage != null)
+                Destroy(marker.edgeImage.gameObject);
+        }
     }
 
     private void LateUpdate()
     {
+        BindPassengerManager();
         if (needsConfiguration)
         {
             needsConfiguration = false;
             fuelCache.calibrated = false;
             repairCache.calibrated = false;
+            for (int i = 0; i < destinationMarkers.Count; i++)
+                destinationMarkers[i].cache.calibrated = false;
             ready = Configure();
         }
 
         // Invalid or absent calibration must never produce guessed movement.
         if (!ready || player == null || mapViewport == null ||
             mapContent == null || playerMarker == null)
+        {
+            HideDestinationMarkers();
             return;
+        }
 
         Vector2 mapSize = new Vector2(displayedHeight * spriteAspect, displayedHeight);
         if (mapContent.sizeDelta != mapSize)
@@ -120,6 +170,162 @@ public sealed class BGCMinimapController : MonoBehaviour
 
         UpdateStation(fuelStation, fuelMarker, fuelEdgeMarker, ref fuelCache, "Fuel Station");
         UpdateStation(repairStation, repairMarker, repairEdgeMarker, ref repairCache, "Repair Station");
+        UpdateDestinationMarkers();
+    }
+
+    private void BindPassengerManager()
+    {
+        if (subscribedPassengerManager == passengerManager)
+            return;
+        if (subscribedPassengerManager != null)
+            subscribedPassengerManager.PassengersOnBoardChanged -= MarkDestinationsDirty;
+        subscribedPassengerManager = passengerManager;
+        if (subscribedPassengerManager != null)
+            subscribedPassengerManager.PassengersOnBoardChanged += MarkDestinationsDirty;
+        destinationsDirty = true;
+    }
+
+    private void MarkDestinationsDirty()
+    {
+        destinationsDirty = true;
+    }
+
+    private void UpdateDestinationMarkers()
+    {
+        if (passengerManager == null || destinationDotSprite == null ||
+            markerLayer == null || edgeIndicators == null || markerLayer.parent != mapContent ||
+            edgeIndicators.IsChildOf(mapContent) || !IsFinite(destinationMarkerSize) ||
+            destinationMarkerSize.x <= 0f || destinationMarkerSize.y <= 0f)
+        {
+            HideDestinationMarkers();
+            destinationsDirty = true;
+            if (!destinationWarningIssued)
+            {
+                Debug.LogWarning("BGCMinimapController: Assign the player's Passenger Manager, Destination Dot Sprite, a positive Destination Marker Size, MarkerLayer under MapContent, and EdgeIndicators outside MapContent. Passenger destination markers are skipped.", this);
+                destinationWarningIssued = true;
+            }
+            return;
+        }
+
+        if (destinationsDirty)
+        {
+            SynchronizeDestinations();
+            destinationsDirty = false;
+        }
+
+        for (int i = 0; i < destinationMarkers.Count; i++)
+        {
+            DestinationMarker marker = destinationMarkers[i];
+            if (marker.destination == null)
+            {
+                HideDestinationMarker(marker);
+                continue;
+            }
+
+            // Recover missing owned UI references without affecting existing map objects.
+            if (marker.mapImage == null)
+                marker.mapImage = CreateDestinationImage("Passenger Destination Dot", markerLayer);
+            if (marker.edgeImage == null)
+                marker.edgeImage = CreateDestinationImage("Passenger Destination Edge Dot", edgeIndicators);
+            ConfigureDestinationImage(marker.mapImage, markerLayer);
+            ConfigureDestinationImage(marker.edgeImage, edgeIndicators);
+
+            // Reuse exactly the service markers' calibration, visibility, and edge placement.
+            // DestinationPoint is the drop-off destination; never use its walkPoint.
+            UpdateStation(marker.destination.transform, marker.mapImage.rectTransform,
+                marker.edgeImage.rectTransform, ref marker.cache, "Passenger Destination");
+        }
+    }
+
+    private void SynchronizeDestinations()
+    {
+        seatedDestinations.Clear();
+        List<GameObject> passengers = passengerManager.passengersOnBoard;
+        if (passengers != null)
+        {
+            for (int i = 0; i < passengers.Count; i++)
+            {
+                GameObject passenger = passengers[i];
+                if (passenger == null)
+                    continue;
+                PassengerData data = passenger.GetComponent<PassengerData>();
+                if (data != null && data.isOnVehicle && data.destination != null)
+                    seatedDestinations.Add(data.destination);
+            }
+        }
+
+        // Retain markers that still have seated passengers and free the rest for reuse.
+        for (int i = 0; i < destinationMarkers.Count; i++)
+        {
+            DestinationMarker marker = destinationMarkers[i];
+            if (marker.destination != null && seatedDestinations.Remove(marker.destination))
+                continue;
+            marker.destination = null;
+            marker.cache = default(StationCache);
+            HideDestinationMarker(marker);
+        }
+
+        foreach (DestinationPoint destination in seatedDestinations)
+        {
+            DestinationMarker freeMarker = null;
+            for (int i = 0; i < destinationMarkers.Count; i++)
+            {
+                if (destinationMarkers[i].destination == null)
+                {
+                    freeMarker = destinationMarkers[i];
+                    break;
+                }
+            }
+            if (freeMarker == null)
+            {
+                freeMarker = new DestinationMarker();
+                destinationMarkers.Add(freeMarker);
+            }
+            freeMarker.destination = destination;
+            freeMarker.cache = default(StationCache);
+        }
+        seatedDestinations.Clear();
+    }
+
+    private Image CreateDestinationImage(string objectName, RectTransform parent)
+    {
+        // Runtime UI children only: no scene assets, prefabs, or gameplay objects.
+        GameObject markerObject = new GameObject(objectName, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        markerObject.SetActive(false);
+        markerObject.layer = parent.gameObject.layer;
+        Image image = markerObject.GetComponent<Image>();
+        image.rectTransform.SetParent(parent, false);
+        image.rectTransform.anchorMin = image.rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
+        image.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+        image.raycastTarget = false;
+        image.maskable = true;
+        image.preserveAspect = true;
+        ConfigureDestinationImage(image, parent);
+        return image;
+    }
+
+    private void ConfigureDestinationImage(Image image, RectTransform parent)
+    {
+        if (image.rectTransform.parent != parent)
+            image.rectTransform.SetParent(parent, false);
+        if (image.sprite != destinationDotSprite)
+            image.sprite = destinationDotSprite;
+        if (image.rectTransform.sizeDelta != destinationMarkerSize)
+            image.rectTransform.sizeDelta = destinationMarkerSize;
+    }
+
+    private void HideDestinationMarkers()
+    {
+        for (int i = 0; i < destinationMarkers.Count; i++)
+            HideDestinationMarker(destinationMarkers[i]);
+    }
+
+    private static void HideDestinationMarker(DestinationMarker marker)
+    {
+        if (marker.mapImage != null)
+            SetMarkerVisible(marker.mapImage.rectTransform, false);
+        if (marker.edgeImage != null)
+            SetMarkerVisible(marker.edgeImage.rectTransform, false);
     }
 
     private Vector2 WorldToImageUV(Vector3 worldPosition)
